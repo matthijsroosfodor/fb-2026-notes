@@ -1,7 +1,7 @@
 // Houdt de app offline beschikbaar - hal 26 heeft geen betrouwbare wifi.
-// v2: netwerk-eerst voor de pagina zelf, zodat een nieuwe versie altijd doorkomt,
-// met de cache als vangnet zodra er geen verbinding is.
-const CACHE='ifa2026-v2';
+// v3: pagina netwerk-eerst MET cache:'no-store', zodat de browsercache van
+// GitHub Pages geen oude versie kan doorschuiven. Cache is het offline-vangnet.
+const CACHE='ifa2026-v3';
 const FILES=['./','./index.html','./manifest.webmanifest'];
 self.addEventListener('install',e=>{
   self.skipWaiting();
@@ -12,19 +12,22 @@ self.addEventListener('activate',e=>{
 });
 self.addEventListener('fetch',e=>{
   if(e.request.method!=='GET') return;
-  const isPagina = e.request.mode==='navigate' || (e.request.destination==='document');
+  const url=new URL(e.request.url);
+  if(url.origin!==location.origin) return;
+  const isPagina = e.request.mode==='navigate' || e.request.destination==='document';
   if(isPagina){
     e.respondWith(
-      fetch(e.request).then(r=>{
+      fetch(url.pathname,{cache:'no-store'}).then(r=>{
+        if(!r||!r.ok) throw new Error('geen goede response');
         const copy=r.clone();
-        caches.open(CACHE).then(c=>c.put(e.request,copy)).catch(()=>{});
+        caches.open(CACHE).then(c=>c.put('./index.html',copy)).catch(()=>{});
         return r;
-      }).catch(()=>caches.match(e.request).then(hit=>hit||caches.match('./index.html')))
+      }).catch(()=>caches.match('./index.html').then(hit=>hit||caches.match(e.request)))
     );
     return;
   }
   e.respondWith(
-    caches.match(e.request).then(hit=>hit || fetch(e.request).then(r=>{
+    caches.match(e.request).then(hit=>hit||fetch(e.request).then(r=>{
       const copy=r.clone();
       caches.open(CACHE).then(c=>c.put(e.request,copy)).catch(()=>{});
       return r;
