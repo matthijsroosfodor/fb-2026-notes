@@ -40,7 +40,7 @@ table.pr input{padding:9px 8px;font-size:15px;border-radius:7px}
 .vraag{display:flex;gap:9px;align-items:flex-start;margin:9px 0;font-size:14px}
 .vraag .bx{flex:none;width:26px;height:26px;border:2px solid #111;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:17px;font-weight:700;background:#fff}
 .vraag .bx.on{background:#1e7a3c;border-color:#1e7a3c;color:#fff}
-.fotos{display:grid;grid-template-columns:repeat(auto-fill,minmax(96px,1fr));gap:8px;margin-top:7px}
+.fotohint{background:#fff8e1;border-left:3px solid #b8860b;padding:8px 11px;font-size:12.5px;border-radius:0 6px 6px 0;margin:13px 0}
 .fw{position:relative;aspect-ratio:1;border-radius:9px;overflow:hidden;background:#eee}
 .fw img{width:100%;height:100%;object-fit:cover;display:block}
 .fw button{position:absolute;top:4px;right:4px;width:26px;height:26px;border:0;border-radius:50%;background:rgba(0,0,0,.65);color:#fff;font-size:15px;line-height:1}
@@ -55,6 +55,10 @@ table.pr input{padding:9px 8px;font-size:15px;border-radius:7px}
 .vervolg button.on{border-color:#1e7a3c;background:#1e7a3c;color:#fff}
 .vervolg button.nee.on{border-color:#c0392b;background:#c0392b}
 .add{width:100%;border:2px dashed #999;background:#fff;border-radius:12px;padding:16px;font-size:15px;font-weight:700;color:#555;margin:14px 0}
+.hs{display:none;background:#c0392b;color:#fff;padding:11px 14px;font-size:13.5px;line-height:1.4;position:sticky;top:0;z-index:29}
+.hs b{display:block;font-size:15px;margin-bottom:3px}
+.hs ol{margin:6px 0 0 17px}.hs li{margin:2px 0}
+body.tab .hs{display:block}
 .saved{position:fixed;bottom:16px;left:50%;transform:translateX(-50%);background:#1e7a3c;color:#fff;padding:9px 18px;border-radius:22px;font-size:13.5px;font-weight:600;opacity:0;transition:opacity .25s;pointer-events:none;z-index:60}
 .saved.on{opacity:1}
 .mdl{position:fixed;inset:0;background:rgba(0,0,0,.55);display:none;align-items:center;justify-content:center;z-index:80;padding:18px}
@@ -76,6 +80,14 @@ table.pr input{padding:9px 8px;font-size:15px;border-radius:7px}
   <div class="meter" id="meter"></div>
 </header>
 
+<div class="hs">
+  <b>Zet deze app op je beginscherm — nu meteen</b>
+  Je gebruikt hem als Safari-tabblad. Zo kan iOS je aantekeningen wissen als het geheugen krap wordt.
+  <ol><li>Druk op de deelknop (vierkantje met pijl omhoog)</li>
+  <li>Kies <b>Zet op beginscherm</b></li>
+  <li>Sluit dit tabblad en werk verder via het icoon</li></ol>
+</div>
+
 <main>
   <div class="filters" id="filters"></div>
   <div id="lijst"></div>
@@ -86,8 +98,8 @@ table.pr input{padding:9px 8px;font-size:15px;border-radius:7px}
 
 <div class="mdl" id="menu"><div class="in">
   <h3>Menu</h3>
-  <button onclick="exportHTML()">Rapport downloaden (met foto's)</button>
-  <button onclick="exportCSV()">CSV downloaden (zonder foto's)</button>
+  <button onclick="exportHTML()">Rapport downloaden</button>
+  <button onclick="exportCSV()">CSV downloaden</button>
   <button class="sec" onclick="backupJSON()">Back-up bestand maken</button>
   <button class="sec" onclick="document.getElementById('imp').click()">Back-up terugzetten</button>
   <input type="file" id="imp" accept=".json" style="display:none" onchange="importJSON(this)">
@@ -228,10 +240,10 @@ let filter='alle';
 
 function save(){try{localStorage.setItem(KEY,JSON.stringify(D));toast()}catch(e){alert('Opslag vol. Download het rapport en verwijder een paar foto\'s.')}meter()}
 let tt;function toast(){const s=document.getElementById('saved');s.classList.add('on');clearTimeout(tt);tt=setTimeout(()=>s.classList.remove('on'),900)}
-function meter(){const b=new Blob([JSON.stringify(D)]).size;const f=Object.values(D).reduce((a,x)=>a+((x.fotos||[]).length),0);
+function meter(){const b=new Blob([JSON.stringify(D)]).size;
  const tot=SUP.length+Object.keys(D).filter(k=>D[k].eigen).length;
  const bezig=Object.keys(D).filter(k=>status(k)).length, klaar=Object.keys(D).filter(k=>status(k)==='klaar').length;
- document.getElementById('meter').textContent=`${klaar} afgerond \u00b7 ${bezig-klaar} bezig \u00b7 ${tot-bezig} nog te doen \u00b7 ${f} foto's \u00b7 ${(b/1048576).toFixed(1)} MB`}
+ document.getElementById('meter').textContent=`${klaar} afgerond \u00b7 ${bezig-klaar} bezig \u00b7 ${tot-bezig} nog te doen \u00b7 ${(b/1024).toFixed(0)} kB opgeslagen`}
 function g(st){return D[st]||(D[st]={})}
 function set(st,k,v){g(st)[k]=v;save()}
 function status(st){const d=D[st];if(!d)return'';if(d.vervolg)return'klaar';if(d.contact||d.eigenmerk||(d.prijs&&d.prijs.some(r=>r.some(c=>c))))return'bezig';return''}
@@ -286,11 +298,7 @@ function kaart(s){
   ${s.v.filter(x=>x).length?`<label>Onze vragen bij deze stand</label>${s.v.filter(x=>x).map((q,i)=>
     `<div class="vraag"><div class="bx ${(d.gedaan||[])[i]?'on':''}" onclick="vink('${s.st}',${i},this)">${(d.gedaan||[])[i]?'✓':''}</div><div>${q}</div></div>
      <textarea style="min-height:44px" oninput="antw('${s.st}',${i},this.value)">${esc((d.antw||[])[i])}</textarea>`).join('')}`:''}
-  <label>Foto's van het product — tik op het camera-vak</label>
-  <div class="fotos">
-   ${(d.fotos||[]).map((f,i)=>`<div class="fw"><img src="${f}"><button onclick="delFoto('${s.st}',${i})">×</button></div>`).join('')}
-   <label class="camera">＋<input type="file" accept="image/*" capture="environment" multiple style="display:none" onchange="addFoto('${s.st}',this)"></label>
-  </div>
+  <div class="fotohint">Fotografeer met de <b>camera-app</b>, niet hier — zorg dat <b>${s.st}</b> in beeld staat.</div>
   <label>Overig / opvallend</label>
   <textarea oninput="set('${s.st}','overig',this.value)">${esc(d.overig)}</textarea>
   <div class="scores">
@@ -317,20 +325,6 @@ function verv(st,v){g(st).vervolg=g(st).vervolg===v?'':v;save();render()}
 function nieuw(){const st='eigen-'+Date.now().toString().slice(-5);D[st]={eigen:true,naam:'',open:true};save();filter='eigen';render();
  setTimeout(()=>document.getElementById('c-'+st).scrollIntoView({behavior:'smooth'}),80)}
 
-function addFoto(st,inp){
- const d=g(st);d.fotos=d.fotos||[];let n=inp.files.length;
- [...inp.files].forEach(f=>{
-  const r=new FileReader();
-  r.onload=e=>{const im=new Image();im.onload=()=>{
-    const max=1000,sc=Math.min(1,max/Math.max(im.width,im.height));
-    const cv=document.createElement('canvas');cv.width=im.width*sc;cv.height=im.height*sc;
-    cv.getContext('2d').drawImage(im,0,0,cv.width,cv.height);
-    d.fotos.push(cv.toDataURL('image/jpeg',.55));
-    if(--n===0){save();render();document.getElementById('c-'+st).classList.add('open')}
-  };im.src=e.target.result};
-  r.readAsDataURL(f);
- });inp.value=''}
-function delFoto(st,i){if(!confirm('Foto verwijderen?'))return;g(st).fotos.splice(i,1);save();render()}
 
 function alleRijen(){
  const eig=Object.keys(D).filter(k=>D[k].eigen).map(k=>({d:'eigen',t:'',st:k,n:D[k].naam||'(nieuw)',ctx:'',fob:'',v:[]}));
@@ -340,7 +334,7 @@ function exportCSV(){
  const H=['Dag','Tijd','Stand','Leverancier','Contact','Eigen merk EU','MOQ','Levertijd monster','Levertijd serie','Prijzen','st/40HQ','Certificering','Typeplaatje','Betaling','Exclusiviteit','Antwoorden','Overig','Product','Prijs','Vertrouwen','Vervolg','Foto s'];
  const rows=alleRijen().map(s=>{const d=D[s.st];return [s.d,s.t,s.st,d.naam||s.n,d.contact,d.eigenmerk,d.moq,d.ltm,d.lts,
   (d.prijs||[]).filter(r=>r.some(c=>c)).map(r=>r.join(' / ')).join(' | '),(d.hq||[]).filter(x=>x).join(' | '),
-  d.cert,d.plaat,d.betaal,d.excl,(d.antw||[]).filter(x=>x).join(' | '),d.overig,d.s_product,d.s_prijs,d.s_vertrouwen,d.vervolg,(d.fotos||[]).length]
+  d.cert,d.plaat,d.betaal,d.excl,(d.antw||[]).filter(x=>x).join(' | '),d.overig,d.s_product,d.s_prijs,d.s_vertrouwen,d.vervolg]
   .map(x=>'"'+String(x==null?'':x).replace(/"/g,'""').replace(/\n/g,' ')+'"').join(',')});
  dl('IFA2026_beursvangst.csv','text/csv;charset=utf-8','﻿'+H.join(',')+'\n'+rows.join('\n'));closeMenu()}
 function exportHTML(){
@@ -353,7 +347,7 @@ th{background:#f0f0ee;width:26%}.im{display:flex;flex-wrap:wrap;gap:8px;margin:8
 .tag{display:inline-block;padding:2px 9px;border-radius:5px;font-weight:700;font-size:12px}
 .monster{background:#e8f5e9}.prijs{background:#fff8e1}.nee{background:#fdecea}
 @media print{h2{page-break-before:always}}</style></head><body>
-<h1>IFA 2026 — beursvangst Fodor B.V.</h1><p>Geëxporteerd ${new Date().toLocaleString('nl-NL')} · ${R.length} standen · ${R.reduce((a,s)=>a+((D[s.st].fotos||[]).length),0)} foto's</p>
+<h1>IFA 2026 — beursvangst Fodor B.V.</h1><p>Geëxporteerd ${new Date().toLocaleString('nl-NL')} · ${R.length} standen</p>
 ${R.map(s=>{const d=D[s.st];const rij=(k,v)=>v?`<tr><th>${k}</th><td>${esc(String(v)).replace(/\n/g,'<br>')}</td></tr>`:'';
  return `<h2>${s.st} · ${esc(d.naam||s.n)} ${d.vervolg?`<span class="tag ${d.vervolg}">${d.vervolg}</span>`:''}</h2>
  <table>${rij('Dag / tijd',[s.d,s.t].filter(x=>x).join(' '))}${rij('Gesproken met',d.contact)}${rij('Eigen merk in EU',d.eigenmerk)}
@@ -362,7 +356,7 @@ ${R.map(s=>{const d=D[s.st];const rij=(k,v)=>v?`<tr><th>${k}</th><td>${esc(Strin
  ${rij('Certificering',d.cert)}${rij('Typeplaatje',d.plaat)}${rij('Betaling',d.betaal)}${rij('Exclusiviteit',d.excl)}
  ${(d.antw||[]).some(x=>x)?`<tr><th>Antwoorden op onze vragen</th><td>${s.v.filter(x=>x).map((q,i)=>(d.antw||[])[i]?`<b>${esc(q)}</b><br>${esc(d.antw[i])}<br><br>`:'').join('')}</td></tr>`:''}
  ${rij('Overig',d.overig)}${rij('Score',[d.s_product&&'product '+d.s_product,d.s_prijs&&'prijs '+d.s_prijs,d.s_vertrouwen&&'vertrouwen '+d.s_vertrouwen].filter(x=>x).join(' · '))}</table>
- ${(d.fotos||[]).length?`<div class="im">${d.fotos.map(f=>`<img src="${f}">`).join('')}</div>`:''}`}).join('')}
+`}).join('')}
 </body></html>`;
  dl('IFA2026_beursvangst.html','text/html;charset=utf-8',h);closeMenu()}
 function backupJSON(){dl('IFA2026_backup_'+new Date().toISOString().slice(0,10)+'.json','application/json',JSON.stringify(D));closeMenu()}
@@ -374,6 +368,23 @@ function dl(naam,type,inhoud){const b=new Blob([inhoud],{type});const u=URL.crea
 function openMenu(){document.getElementById('menu').classList.add('on')}
 function closeMenu(){document.getElementById('menu').classList.remove('on')}
 document.getElementById('menu').addEventListener('click',e=>{if(e.target.id==='menu')closeMenu()});
+
+// Draait hij vanaf het beginscherm of nog in een tabblad?
+function opBeginscherm(nav,mm){
+  if(nav.standalone===true) return true;
+  try{ if(mm && mm('(display-mode: standalone)').matches) return true; }catch(e){}
+  return false;
+}
+function isTouchApparaat(nav){
+  return (nav.maxTouchPoints||0) > 0 || /iPad|iPhone|iPod|Android/.test(nav.userAgent||'');
+}
+function checkBeginscherm(){
+  const tab = isTouchApparaat(navigator) && !opBeginscherm(navigator, window.matchMedia && window.matchMedia.bind(window));
+  document.body.classList.toggle('tab', tab);
+  return tab;
+}
+checkBeginscherm();
+
 render();
 </script>
 </body></html>
