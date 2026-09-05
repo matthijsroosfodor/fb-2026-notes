@@ -1,0 +1,8 @@
+{
+  "name": "IFA 2026 · Fodor",
+  "short_name": "IFA 2026",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#f2f2ef",
+  "theme_color": "#111111"
+}
