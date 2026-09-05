@@ -124,7 +124,8 @@ body.tab .hs{display:block}
   <button onclick="exportHTML()">Rapport downloaden</button>
   <button onclick="exportCSV()">CSV downloaden</button>
   <button class="sec" onclick="backupJSON()">Back-up bestand maken</button>
-  <button class="sec" onclick="document.getElementById('imp').click()">Back-up terugzetten</button>
+  <button class="sec" onclick="document.getElementById('imp').click()">Back-up van het andere apparaat samenvoegen</button>
+  <button class="sec" onclick="importOngedaan()">Samenvoegen ongedaan maken</button>
   <input type="file" id="imp" accept=".json" style="display:none" onchange="importJSON(this)">
   <button class="sec" onclick="FOB?vergrendel():vraagCode();closeMenu()">Max-FOB tonen of verbergen</button>
   <button class="sec" onclick="closeMenu()">Sluiten</button>
@@ -490,8 +491,78 @@ ${R.map(s=>{const d=D[s.st];const rij=(k,v)=>v?`<tr><th>${k}</th><td>${esc(Strin
 </body></html>`;
  dl('IFA2026_beursvangst.html','text/html;charset=utf-8',h);closeMenu()}
 function backupJSON(){dl('IFA2026_backup_'+new Date().toISOString().slice(0,10)+'.json','application/json',JSON.stringify(D));closeMenu()}
-function importJSON(inp){const f=inp.files[0];if(!f)return;const r=new FileReader();
- r.onload=e=>{try{D=JSON.parse(e.target.result);save();render();closeMenu();alert('Back-up teruggezet.')}catch(x){alert('Kon het bestand niet lezen.')}};r.readAsText(f)}
+function leeg(v){return v===undefined||v===null||v===''||(Array.isArray(v)&&!v.some(x=>Array.isArray(x)?x.some(y=>y):y=>y))}
+function celLeeg(v){return v===undefined||v===null||v===''}
+function samenvoegen(mijn,hun){
+  // Voegt 'hun' bij 'mijn' zonder ooit iets van mij weg te gooien.
+  const st={nieuw:0,aangevuld:0,conflict:0,details:[]};
+  for(const stand in hun){
+    const h=hun[stand]||{};
+    if(!mijn[stand] || Object.keys(mijn[stand]).filter(k=>k!=='open').length===0){
+      const kopie=Object.assign({},h); delete kopie.open;
+      if(Object.keys(kopie).length){ mijn[stand]=Object.assign(mijn[stand]||{},kopie); st.nieuw++; }
+      continue;
+    }
+    const m=mijn[stand]; let raak=false;
+    for(const veld in h){
+      if(veld==='open') continue;
+      const hv=h[veld], mv=m[veld];
+      if(veld==='prijs'){
+        if(!Array.isArray(hv)) continue;
+        if(!Array.isArray(mv)){ m.prijs=hv; raak=true; continue; }
+        for(let i=0;i<hv.length;i++) for(let j=0;j<(hv[i]||[]).length;j++){
+          const hc=hv[i][j], mc=(mv[i]||[])[j];
+          if(celLeeg(hc)) continue;
+          if(celLeeg(mc)){ mv[i]=mv[i]||['','','','']; mv[i][j]=hc; raak=true; }
+          else if(mc!==hc){ st.conflict++; st.details.push(stand+' prijstabel: "'+mc+'" vs "'+hc+'"'); }
+        }
+        continue;
+      }
+      if(veld==='antw'){
+        if(!Array.isArray(hv)) continue;
+        m.antw=m.antw||[];
+        hv.forEach((x,i)=>{ if(celLeeg(x))return; if(celLeeg(m.antw[i])){m.antw[i]=x;raak=true;}
+          else if(m.antw[i]!==x){st.conflict++;st.details.push(stand+' vraag '+(i+1));} });
+        continue;
+      }
+      if(celLeeg(hv)) continue;
+      if(celLeeg(mv)){ m[veld]=hv; raak=true; }
+      else if(mv!==hv){
+        st.conflict++; st.details.push(stand+' '+veld);
+        m.overig=(m.overig?m.overig+'\n':'')+'[ander apparaat] '+veld+': '+hv;
+      }
+    }
+    if(raak) st.aangevuld++;
+  }
+  return st;
+}
+function importJSON(inp){
+  const f=inp.files[0]; if(!f) return; const r=new FileReader();
+  r.onload=e=>{
+    let hun;
+    try{ hun=JSON.parse(e.target.result); }catch(x){ alert('Kon het bestand niet lezen.'); return; }
+    if(typeof hun!=='object'||!hun){ alert('Dit lijkt geen back-up van deze app.'); return; }
+    const veilig=JSON.stringify(D);
+    const st=samenvoegen(D,hun);
+    save(); render(); closeMenu();
+    let m='Samengevoegd, er is niets van jou overschreven.\n\n'
+      + st.nieuw+' standen erbij\n'
+      + st.aangevuld+' standen aangevuld\n'
+      + st.conflict+' velden stonden op allebei anders ingevuld';
+    if(st.conflict) m+='\n\nJouw versie is behouden; die van het andere apparaat staat erbij onder "Overig":\n- '
+      + st.details.slice(0,8).join('\n- ') + (st.details.length>8?'\n- (en '+(st.details.length-8)+' meer)':'');
+    m+='\n\nNiet goed? Kies Ongedaan maken in het menu.';
+    localStorage.setItem('fodor_ifa_voor_import',veilig);
+    alert(m);
+  };
+  r.readAsText(f); inp.value='';
+}
+function importOngedaan(){
+  const v=localStorage.getItem('fodor_ifa_voor_import');
+  if(!v){ alert('Er is niets om ongedaan te maken.'); return; }
+  if(!confirm('Terug naar de situatie van vlak vóór het samenvoegen?')) return;
+  D=JSON.parse(v); localStorage.removeItem('fodor_ifa_voor_import'); save(); render(); closeMenu();
+}
 function dl(naam,type,inhoud){const b=new Blob([inhoud],{type});const u=URL.createObjectURL(b);
  const a=document.createElement('a');a.href=u;a.download=naam;document.body.appendChild(a);a.click();
  setTimeout(()=>{URL.revokeObjectURL(u);a.remove()},400)}
