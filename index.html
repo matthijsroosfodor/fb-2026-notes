@@ -680,6 +680,664 @@ main{padding:10px 12px 120px;max-width:900px;margin:0 auto}
 .chd .nm{flex:1;font-weight:600;font-size:15.5px;line-height:1.25}
 .chd .tm{font-size:12px;color:#777;white-space:nowrap}
 .dot{width:11px;height:11px;border-radius:50%;background:#ddd;flex:none}
+.dot.bezig{background:#e0a800}.dot.klaar{background:#1e7a3c}.dot.over{background:#bbb;box-shadow:inset 0 0 0 3px #fff,0 0 0 1.5px #bbb}
+.chip.todo{border-color:#1e7a3c;color:#1e7a3c}.chip.todo.on{background:#1e7a3c;border-color:#1e7a3c;color:#fff}
+.route{background:#fff;border-radius:12px;margin:9px 0 14px;box-shadow:0 1px 3px rgba(0,0,0,.09);overflow:hidden}
+.route .rkop{background:#f4fbf6;border-left:3px solid #1e7a3c;padding:10px 12px;font-size:13px;line-height:1.45}
+.route .rhal{background:#efefec;padding:6px 12px;font-size:12.5px;font-weight:700;letter-spacing:.03em;text-transform:uppercase;color:#555}
+.route .rhal span{float:right;font-weight:600;color:#888}
+.rrij{display:flex;align-items:center;gap:9px;padding:11px 12px;border-bottom:1px solid #f0f0ec;cursor:pointer}
+.rrij:active{background:#f6f6f3}
+.rrij b{font-family:ui-monospace,Menlo,monospace;font-size:13.5px;flex:none;min-width:64px}
+.rrij .rn{flex:1;font-size:14px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.rrij em{font-style:normal;font-size:12.5px;color:#888;flex:none}
+.rp{flex:none;width:19px;height:19px;border-radius:5px;font-style:normal;font-size:11.5px;font-weight:700;display:flex;align-items:center;justify-content:center;color:#fff}
+.rp.pA{background:#c0392b}.rp.pB{background:#b8860b}.rp.pC{background:#5a7d9a}.rp.pD{background:#999}.rp.pn{background:#ddd;color:#888}
+.klaarmelding{background:#f4fbf6;border-left:3px solid #1e7a3c;border-radius:0 8px 8px 0;padding:14px 15px;font-size:14px;line-height:1.5;margin:9px 0}
+.body{display:none;padding:0 14px 16px;border-top:1px solid #eee}
+.card.open .body{display:block}
+.ctx{background:#f0f7f2;border-left:3px solid #1e7a3c;padding:9px 11px;font-size:13px;border-radius:0 6px 6px 0;margin:12px 0}
+.fob{background:#fdf6f5;border-left:3px solid #c0392b;padding:8px 11px;font-size:13px;border-radius:0 6px 6px 0;margin:10px 0}
+label{display:block;font-size:11.5px;text-transform:uppercase;letter-spacing:.05em;color:#666;font-weight:700;margin:13px 0 4px}
+input[type=text],textarea,select{width:100%;border:1.5px solid #d5d5d0;border-radius:9px;padding:11px 12px;font-size:16px;background:#fff;font-family:inherit}
+textarea{min-height:62px;resize:vertical}
+input:focus,textarea:focus,select:focus{outline:0;border-color:#1e7a3c}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:0 10px}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:0 8px}
+table.pr{width:100%;border-collapse:collapse;margin-top:5px}
+table.pr th{font-size:10.5px;text-transform:uppercase;color:#666;padding:3px 2px;text-align:left;font-weight:700}
+table.pr td{padding:2px}
+table.pr input{padding:9px 8px;font-size:15px;border-radius:7px}
+.vraag{display:flex;gap:9px;align-items:flex-start;margin:9px 0;font-size:14px}
+.vraag .bx{flex:none;width:26px;height:26px;border:2px solid #111;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:17px;font-weight:700;background:#fff}
+.vraag .bx.on{background:#1e7a3c;border-color:#1e7a3c;color:#fff}
+.pri{flex:none;width:22px;height:22px;border-radius:5px;display:flex;align-items:center;justify-content:center;font:700 12px/1 sans-serif;color:#fff}
+.pri.pA{background:#1e7a3c}.pri.pB{background:#2f5d8a}.pri.pC{background:#8a7a2f}.pri.pD{background:#999}
+.pribar{padding:7px 11px;font-size:12.5px;border-radius:6px;margin:12px 0 0}
+.pribar.pA{background:#e8f5e9;border-left:3px solid #1e7a3c}
+.pribar.pB{background:#e8eff7;border-left:3px solid #2f5d8a}
+.pribar.pC{background:#faf6e4;border-left:3px solid #8a7a2f}
+.pribar.pD{background:#f2f2f2;border-left:3px solid #999}
+.art th{font-size:10.5px;text-transform:uppercase;color:#667;text-align:left;padding:2px 0;font-weight:700}
+.art th.pr,.art td.pr{text-align:right}
+.fobcel{color:#c0392b;font-weight:700}
+.ontgr{margin-top:6px;padding:8px 14px;border:1.5px solid #2f5d8a;background:#fff;color:#2f5d8a;border-radius:8px;font-size:13px;font-weight:700}
+.art{background:#f4f7fb;border-left:3px solid #2f5d8a;padding:9px 11px;font-size:12.5px;border-radius:0 6px 6px 0;margin:12px 0}
+.art table{width:100%;border-collapse:collapse;margin:5px 0 4px}
+.art td{padding:2px 0;border-bottom:1px solid #e3e9f0}
+.art td.pr{text-align:right;white-space:nowrap;color:#555;width:70px}
+.art i{font-size:11.5px;color:#667}
+.geen{background:#fff;border-radius:12px;padding:14px 15px;margin:9px 0;box-shadow:0 1px 3px rgba(0,0,0,.09)}
+.geen h3{margin:14px 0 4px;font:600 15px Georgia,serif}
+.geen h3:first-of-type{margin-top:6px}
+.geen table{width:100%;border-collapse:collapse;font-size:13px}
+.geen td{padding:4px 0;border-bottom:1px solid #eee}
+.geen td.pr{text-align:right;white-space:nowrap;color:#555;width:78px}
+.geen .kop{background:#fdf6f5;border-left:3px solid #c0392b;padding:9px 11px;font-size:13px;border-radius:0 6px 6px 0;margin-bottom:10px}
+.fotohint{background:#fff8e1;border-left:3px solid #b8860b;padding:8px 11px;font-size:12.5px;border-radius:0 6px 6px 0;margin:13px 0}
+.fw{position:relative;aspect-ratio:1;border-radius:9px;overflow:hidden;background:#eee}
+.fw img{width:100%;height:100%;object-fit:cover;display:block}
+.fw button{position:absolute;top:4px;right:4px;width:26px;height:26px;border:0;border-radius:50%;background:rgba(0,0,0,.65);color:#fff;font-size:15px;line-height:1}
+.camera{display:flex;align-items:center;justify-content:center;border:2px dashed #aaa;border-radius:9px;aspect-ratio:1;font-size:30px;color:#888;background:#fafafa}
+.scores{display:flex;gap:14px;flex-wrap:wrap;margin-top:5px}
+.sc{flex:1;min-width:135px}
+.sc .stars{display:flex;gap:5px;margin-top:4px}
+.sc .stars span{width:34px;height:34px;border:2px solid #ccc;border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:700;color:#999;font-size:15px}
+.sc .stars span.on{background:#111;border-color:#111;color:#fff}
+.vervolg{display:flex;gap:8px;margin-top:8px}
+.vervolg button{flex:1;border:2px solid #ccc;background:#fff;border-radius:10px;padding:12px 6px;font-size:14px;font-weight:700;color:#555}
+.vervolg button.on{border-color:#1e7a3c;background:#1e7a3c;color:#fff}
+.vervolg button.nee.on{border-color:#c0392b;background:#c0392b}
+.add{width:100%;border:2px dashed #999;background:#fff;border-radius:12px;padding:16px;font-size:15px;font-weight:700;color:#555;margin:14px 0}
+.hs{display:none;background:#c0392b;color:#fff;padding:11px 14px;font-size:13.5px;line-height:1.4;position:sticky;top:0;z-index:29}
+.hs b{display:block;font-size:15px;margin-bottom:3px}
+.hs ol{margin:6px 0 0 17px}.hs li{margin:2px 0}
+body.tab .hs{display:block}
+.saved{position:fixed;bottom:16px;left:50%;transform:translateX(-50%);background:#1e7a3c;color:#fff;padding:9px 18px;border-radius:22px;font-size:13.5px;font-weight:600;opacity:0;transition:opacity .25s;pointer-events:none;z-index:60}
+.saved.on{opacity:1}
+.mdl{position:fixed;inset:0;background:rgba(0,0,0,.55);display:none;align-items:center;justify-content:center;z-index:80;padding:18px}
+.mdl.on{display:flex}
+.mdl .in{background:#fff;border-radius:14px;padding:20px;max-width:440px;width:100%;max-height:84vh;overflow:auto}
+.mdl h3{margin:0 0 10px;font:600 18px Georgia,serif}
+.mdl button{width:100%;padding:13px;border-radius:10px;border:0;font-size:15px;font-weight:700;margin-top:9px;background:#111;color:#fff}
+.mdl button.sec{background:#eee;color:#333}
+@media (max-width:520px){.g2,.g3{grid-template-columns:1fr}}
+</style><link rel="manifest" href="manifest.webmanifest">
+<script>if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}))}</script>
+</head><body>
+
+<header>
+  <h1>IFA 2026 · Fodor</h1>
+  <button class="hbtn" onclick="exportHTML()">Rapport</button>
+  <button class="hbtn" onclick="exportCSV()">CSV</button>
+  <button class="hbtn" onclick="openMenu()">⋯</button>
+  <div class="meter" id="meter"></div>
+</header>
+
+<div class="hs">
+  <b>Zet deze app op je beginscherm — nu meteen</b>
+  Je gebruikt hem als Safari-tabblad. Zo kan iOS je aantekeningen wissen als het geheugen krap wordt.
+  <ol><li>Druk op de deelknop (vierkantje met pijl omhoog)</li>
+  <li>Kies <b>Zet op beginscherm</b></li>
+  <li>Sluit dit tabblad en werk verder via het icoon</li></ol>
+</div>
+
+<main>
+  <div class="filters" id="filters"></div>
+  <div id="lijst"></div>
+  <button class="add" onclick="nieuw()">+ Stand toevoegen die niet op de lijst staat</button>
+</main>
+
+<div class="saved" id="saved">opgeslagen</div>
+
+<div class="mdl" id="menu"><div class="in">
+  <h3>Menu</h3>
+  <button onclick="exportHTML()">Rapport downloaden</button>
+  <button onclick="exportCSV()">CSV downloaden</button>
+  <button class="sec" onclick="backupJSON()">Back-up bestand maken</button>
+  <button class="sec" onclick="document.getElementById('imp').click()">Back-up van het andere apparaat samenvoegen</button>
+  <button class="sec" onclick="importOngedaan()">Samenvoegen ongedaan maken</button>
+  <input type="file" id="imp" accept=".json" style="display:none" onchange="importJSON(this)">
+  <button class="sec" onclick="FOB?vergrendel():vraagCode();closeMenu()">Max-FOB tonen of verbergen</button>
+  <button class="sec" onclick="closeMenu()">Sluiten</button>
+  <p style="font-size:12.5px;color:#666;margin-top:14px">Alles wordt automatisch bewaard op dit apparaat, bij elke toetsaanslag. Werkt zonder internet. Let op: de gegevens staan alleen op <b>dit</b> apparaat \u2014 vul dus alles op hetzelfde apparaat in. Maak aan het eind van elke dag een back-up en mail die naar jezelf.</p>
+</div></div>
+
+<script>
+const SUP=[
+{d:"ZO",t:"09:00",st:"26a-329",n:"Shenzhen Maxtop Digital",
+ ctx:"NIEUW. 2012, 5.000 m\u00b2, 9 lijnen, 300 man, 6 mln kinderproducten/jr, BSCI+ISO9001. OEM/ODM smartwatches en kindertech. Klanten: Walmart, Disney, Target, ALDI, MEDIAMARKT, OTTO, Smyths, ToysRus. Dekt 6 artikelen \u00e0 \u20ac1,8M die nul leveranciers hadden. LET OP: MediaMarkt is ook ons kanaal.",
+ fob:"",
+ pr:{"t": "C", "l": "De moeite waard", "o": 1.79, "rol": ""},
+ art:[["Smartwatch AMOLED dames", "€54,95"], ["Smartwatch pro heren/dames", "€42,95"], ["Smartwatch AMOLED 3 bandjes", "€52,95"], ["Sporthorloge GPS", "€44,95"], ["Kinderhorloge GPS 4G", "€79,95"], ["Stappenteller/activity tracker", "€28,95"]],
+ v:["Voor welke klanten maakt u in de EU, en in welke categorie\u00ebn?","Smartwatch AMOLED dames + pro heren: prijs op 500/1.000/3.000","Eigen app en firmware, of onze branding erin?","Kinderhorloge 4G GPS: prijs, MOQ, EU-certificering"]},
+{d:"ZO",t:"09:15",st:"26a-353",n:"Ningbo Liqi Electrical Appliance",
+ ctx:"NIEUW EN GROOT. 1998, 200.000 m\u00b2, 1.500 man, 25 lijnen, 40.000 stuks/dag, 10 mln/jr export. ISO9001+CE+GS+RoHS+SAA+ETL, 50+ nieuwe modellen/jr, FLEXIBELE MOQ. Maken kachels, airfryers, ventilatoren, SPOT CLEANERS en sealers. Spot cleaner = tapijtreiniger \u20ac7,27M = onze grootste categorie. Tweede offerte naast Easy Housewares. NEEM HIER DE TIJD.",
+ fob:"",
+ pr:{"t": "A", "l": "Topprioriteit", "o": 7.66, "rol": "tweede offerte op onze grootste categorie"},
+ art:[["Tapijtreiniger PRO 1800W", "€199,00"], ["Vlekkenreiniger draagbaar mini", "€69,95"], ["Tapijtreiniger mid 750W", "€89,95"], ["Tapijtreiniger compact 600W", "€54,95"], ["Frituurpan 3L koude zone", "€39,95"], ["Tapijtreiniger Hybridsteam 1800W", "€94,95"], ["Tapijtreiniger premium 10-in-1", "€159,00"], ["Frituurpan dubbel 2x3L", "€59,95"], ["Airfryer 6L digitaal", "€89,95"], ["Airfryer oven 6-in-1 PFAS-vrij", "€184,00"]],
+ v:["Spot cleaner: prijs instap / mid / PRO, en gescheiden schoon- en vuilwatertanks?","Wat betekent flexibele MOQ concreet \u2014 vanaf hoeveel stuks?","Airfryer, kachel en ventilator: prijslijst","Verkoopt Liqi zelf onder eigen merk in de EU?"]},
+{d:"ZO",t:"09:30",st:"26a-407",n:"Ningbo Seeking Intelligent Technology",
+ ctx:"TV-beugel €1,24M (D2C 90%, alleen Hama) + monitorarm €516k (D2C 100%) + zit-sta bureau €717k (D2C 100%, géén merken). Auronic haalt €650k/jr met vijf beugelmaten.",
+ fob:"",
+ pr:{"t": "C", "l": "De moeite waard", "o": 1.53, "rol": ""},
+ art:[["TV beugel full motion 26-55", "€54,95"], ["TV-muurbeugel full-motion 26-55\"", "€34,95"], ["Monitorarm 2 schermen gasveer", "€49,95"], ["TV-muurbeugel full-motion 37-90\" XL", "€44,95"], ["Zit-sta bureau elektrisch 140x70", "€119,95"], ["TV standaard vloer 26-55", "€37,95"], ["Zit-sta bureauframe elektrisch", "€94,95"], ["Monitor arm 2 schermen", "€29,95"]],
+ v:["Prijs op VIJF maten: 13-42, 26-55, 26-65, 37-70, 37-90 inch","Draagvermogen per maat + testrapport","Stuks per 40HQ per maat","Monitorarm gasveer 13-32\" + zit-sta bureau en los frame"]},
+{d:"ZO",t:"09:55",st:"26a-439",n:"Zhejiang Red and Black (Joybold)",
+ ctx:"NIEUW. 2019, achter Joybold Group (22 jr). Professioneel fabrikant van premium MASSAGEPISTOLEN. 20+ engineers, OEM/ODM voor internationale merken, eigen spuitgieterij/lakkerij/metaalbewerking, 12+ lijnen, eigen testlab. Dekt 7 artikelen \u00e0 \u20ac1,7M die nul leveranciers hadden. Ligt tussen 407 en 551 op je route.",
+ fob:"",
+ pr:{"t": "C", "l": "De moeite waard", "o": 1.75, "rol": ""},
+ art:[["Massagepistool PRO 30 standen", "€59,95"], ["Shiatsu massagestoel-opzetstuk", "€169,95"], ["Massagekussen shiatsu draadloos", "€41,95"], ["Shiatsu massagekussen nek/rug", "€49,95"], ["Massagepistool mini draagbaar", "€32,95"], ["Massagepistool infrarood + warmte", "€94,95"], ["Voetmassage shiatsu + warmte", "€119,00"]],
+ v:["Massagepistool 30 standen: prijs op 500/1.000/3.000","Accuduur, geluidsniveau in dB, aantal opzetstukken","Ook massagekussens en voetmassage, of alleen guns?","Verkoopt u zelf onder eigen merk in de EU?"]},
+{d:"ZO",t:"10:05",st:"26a-551",n:"Ningbo Lemeijia (LIMIKA)",
+ ctx:"80.000 m², 1.000 man, 5 mln stuks/jr, ISO9001+BSCI. Hondenfohn = €971k/jr met D2C 100% — géén enkel merk in die categorie.",
+ fob:"",
+ pr:{"t": "B", "l": "Belangrijk", "o": 2.17, "rol": ""},
+ art:[["Frituurpan 3L koude zone", "€39,95"], ["Frituurpan dubbel 2x3L", "€59,95"], ["Hondenfohn/waterblazer 3200W", "€69,95"], ["Airfryer 6L digitaal", "€89,95"], ["Airfryer oven 6-in-1 PFAS-vrij", "€184,00"]],
+ v:["Hondenfohn: geluidsniveau in dB","Vier opzetstukken standaard?","Vermogen: schap zit op 2200-3800W","Kledingstomer handmodel"]},
+{d:"ZO",t:"10:40",st:"26a-643",n:"Suzhou Ribno Electric Appliance",
+ ctx:"Steelstofzuiger €6,02M/jr, D2C 78%. Doen niets anders, 2 mln stuks/jr. HET GAT: Duitsland zit op 55 kPa/650W/70min; Samako is marktleider op Bol met 32 kPa/450W voor €195,56.",
+ fob:"",
+ pr:{"t": "B", "l": "Belangrijk", "o": 3.56, "rol": ""},
+ art:[["Steelstofzuiger 50kPa 600W 70min", "€169,00"], ["Steelstofzuiger 350W met dweil", "€79,95"], ["Kruimeldief 27kPa laadstation", "€69,95"], ["Stofzuiger met zak 850W", "€69,95"], ["Autostofzuiger 2-in-1 zuigen/blazen", "€49,95"], ["Robotstofzuiger 5000Pa dweil+app", "€199,00"], ["Stofzuigerzakken universeel 20st", "€19,95"]],
+ v:["Hoogste kPa die u levert, en wat kost dat model?","Accuduur op VOL vermogen, niet in eco","Dweilfunctie: los of geïntegreerd?","Twee jaar garantie op de accu?"]},
+{d:"ZO",t:"11:15",st:"26a-697",n:"Yumyth — Emily Chan",
+ ctx:"ZIJ HEBBEN JULLIE UITGENODIGD. Nieuw: 3-in-1 vacuümsealer, kamersealer, kubusijsmachine, 20 kg/dag nugget. Onze ICEMAKER12B heeft 0,45L reservoir tegen 1,2L bij de hero en staat €13 te duur.",
+ fob:"",
+ pr:{"t": "B", "l": "Belangrijk", "o": 2.15, "rol": "zij nodigden jullie uit"},
+ art:[["IJsblokjesmachine 1.2L", "€84,95"], ["IJsblokjesmachine XL nugget", "€119,00"], ["Vacuumsealer 95kPa 10-in-1", "€64,95"]],
+ v:["CATALOGUS GELEZEN — vraag naar modelnummers: YJ2001 (nugget/chewable), YZ1201 (bullet), YF1201 (cube)","1,2L reservoir op ons bestaande model — wat kost dat?","Nugget: op Bol staat GEEN ENKEL merk in de top. Winnende spec = zelfreinigend, 15 kg/24u, uittrekbare lade","Plafond nugget: $39,09 bij €119 · $55,16 bij €169","Leveren zij 220-240V standaard? (catalogus noemt ook 100-120V)","Vacuümsealer alleen als bijproduct — zij hebben er 40, WinLin biedt $9,50","Slush YX1801/1802 NIET doen — categorie afgevallen"]},
+{d:"ZO",t:"11:55",st:"26b-739",n:"Feiyang Speaker Factory — Miko",
+ ctx:"ZIJ HEBBEN JULLIE UITGENODIGD. MOQ 100 tegenover onze normale 540-1500 — 3,7x goedkoper testen, in het model €2,8M waard aan bespaard werkkapitaal.",
+ fob:"",
+ pr:{"t": "B", "l": "Belangrijk", "o": 2.68, "rol": "zij nodigden jullie uit"},
+ art:[["Oordopjes TWS basis", "€28,95"], ["Platenspeler BT + speakers", "€69,95"], ["Over-ear koptelefoon ANC", "€29,95"], ["Oordopjes bedraad USB-C", "€15,95"], ["Bone conduction sport oordopjes", "€54,95"], ["Open-ear sport oordopjes", "€52,95"], ["Oordopjes TWS ANC", "€26,95"], ["Gaming headset 7.1 surround", "€36,95"], ["Kinder koptelefoon bluetooth", "€29,95"], ["Kinder koptelefoon LED thema", "€29,95"], ["Draadloze speaker 10W", "€31,95"]],
+ v:["LET OP — catalogus gelezen: zij maken GEEN oordopjes of koptelefoons. Alleen DJ-, party- en trolleyspeakers (FG-serie).","Vraag FG208-30 (40W) en FG108-07 (30W): prijs, accu 7,4V/4400mAh, lichteffect","Bevestig MOQ 100 — per model of per order?","Welke modellen op 230V met CE en RED?","Prijs op 100 / 500 / 1.000","Leveren onder BOHLT of RED6?","Maakt iemand anders in hun groep wél oordopjes?"]},
+{d:"ZO",t:"13:15",st:"26b-861",n:"Mielux",
+ ctx:"Broodbakmachine €2,26M/jr, D2C 65%. Fornello Supremo (€144,95) staat EERSTE met €502k/jr, vóór alle merken.",
+ fob:"",
+ pr:{"t": "C", "l": "De moeite waard", "o": 1.17, "rol": ""},
+ art:[["Broodbakmachine 19 programma's", "€139,95"], ["Broodbakmachine instap", "€69,95"], ["Broodbakmachine", "€129,00"]],
+ v:["19 programma's, 1,3 kg, warmhoudfunctie","Bakpan PFAS-vrij?","Prijs instap én uitgebreid","Stuks per 40HQ"]},
+{d:"ZO",t:"13:50",st:"26b-899",n:"Guangdong Invitop Technology",
+ ctx:"VIER categorieën in één gesprek: luchtontvochtiger €3,54M (D2C 96%) + ijsmachine + koelbox + luchtreiniger. OEM/ODM sinds 2011, eigen labs. Ook slush en auto-koelkasten.",
+ fob:"",
+ pr:{"t": "C", "l": "De moeite waard", "o": 1.54, "rol": ""},
+ art:[["Luchtontvochtiger 16L/dag", "€119,95"], ["Luchtontvochtiger 20L/dag", "€149,95"], ["Luchtontvochtiger 450ml", "€44,95"], ["Luchtontvochtiger 12L/dag", "€99,95"], ["Luchtontvochtiger mini 1L peltier", "€39,95"]],
+ v:["Prijs op 12L, 16L en 20L — met wasdroogfunctie","Compressor of peltier?","IJsmachine met 1,2L reservoir \u2014 haalt u onze doelprijs? (kaart in de map)","Slush-machine en auto-koelkast: prijs en MOQ"]},
+{d:"ZO",t:"14:30",st:"26b-917",n:"Yiwu Kemei Electric Appliance",
+ ctx:"DRIE van de top 10 in één gesprek: föhn €2,65M + tondeuse €2,26M + scheerapparaat €6,72M. Sansbeauté haalt €366k met één tondeuse van €55,61.",
+ fob:"",
+ pr:{"t": "B", "l": "Belangrijk", "o": 3.38, "rol": ""},
+ art:[["Tondeuse draadloos hoofdhaar+baard", "€54,95"], ["Scheerapparaat 8-in-1 hoofd+baard", "€49,95"], ["Airstyler 5-in-1 multistyler", "€119,95"], ["Fohn ionisch 110.000rpm + diffuser", "€84,95"], ["Airstyler 8-in-1 multistyler", "€139,95"], ["Fohn premium 2400W + diffuser", "€129,95"], ["Neustrimmer oplaadbaar", "€13,95"], ["Airstyler 6-in-1 Airwrap-alt", "€109,95"], ["Head-shaver 7D IPX6", "€49,95"], ["Nagelfrees 35.000tpm 13-in-1", "€34,95"], ["Fohnborstel 3-in-1", "€24,95"], ["Stijltang wet-to-dry 2-in-1", "€99,95"]],
+ v:["Prijs op alle drie tegelijk","Föhn: toerental en ionische functie (schap: 110.000 rpm)","Scheerapparaat: hoofd én baard in één","Accu: looptijd en laadtijd"]},
+{d:"ZO",t:"15:10",st:"26b-923",n:"Zhejiang Easy Housewares",
+ ctx:"CATALOGUS GELEZEN — BIJGESTELD. Zij zijn vooral een dweil- en emmerfabrikant (13 van 17 pagina's zonder stekker). Elektrisch hebben ze maar 2 relevante modellen: YLBY001 en YLBY002, spot cleaners met gescheiden tanks, en op de 001 een display dat 60°C toont. De tapijtreiniger van €7,27M is dus NIET hun product — dat blijft bij Sevenjoy en Welly. Vraag alleen die twee, laat de dweilen liggen. Vraag naar Christina Lee.",
+ fob:"",
+ pr:{"t": "A", "l": "Topprioriteit", "o": 5.88, "rol": ""},
+ art:[["Tapijtreiniger PRO 1800W", "€199,00"], ["Vlekkenreiniger draagbaar mini", "€69,95"], ["Tapijtreiniger mid 750W", "€89,95"], ["Tapijtreiniger compact 600W", "€54,95"], ["Tapijtreiniger Hybridsteam 1800W", "€94,95"], ["Tapijtreiniger premium 10-in-1", "€159,00"]],
+ v:["ALLEEN YLBY001 en YLBY002 vragen — de rest van hun catalogus is dweilen","Is die 60°C echt verwarmd water of alleen een aflezing?","Tankinhoud schoon en vuil apart","Plafond: $30,61 bij €94,95 · $22,29 bij €69,95","Levert u de reinigingsvloeistof? (Samako: €194k/jr aan spray)","Stuks per 40HQ per model","Wie staat als fabrikant op het typeplaatje?","Maken zij ook de grote tapijtreiniger, of alleen spot? Zo nee: door naar Sevenjoy/Welly"]},
+{d:"ZO",t:"15:50",st:"26b-1043",n:"Nvision Electrical Appliance",
+ ctx:"Stoomreiniger €4,47M + kledingstomer €2,29M. 80.000 m², 450 man, 10-20 nieuwe producten/jr. FLOWSTEAM (naamloos €70,28) staat op Bol bóven Philips met 801 stuks/mnd.",
+ fob:"",
+ pr:{"t": "B", "l": "Belangrijk", "o": 4.32, "rol": ""},
+ art:[["Kledingstomer handmodel", "€64,95"], ["Stoomreiniger 10-in-1", "€94,95"], ["Stoomreiniger PRO 1500W", "€179,00"], ["Kledingstomer staand 1500W", "€42,95"], ["Handstoomreiniger 1350W", "€59,95"], ["Stoommop 2-in-1", "€69,95"], ["Kledingstomer staand 2200W", "€159,95"]],
+ v:["Kunnen stoomreiniger en kledingstomer dezelfde ketel delen?","Uw beauty-lijn — wat zit daarin? (airstyler = €3,16M)","Aantal opzetstukken; schap wint op 9-13","Opwarmtijd in seconden"]},
+{d:"ZO",t:"16:30",st:"26b-1073",n:"Foshan Shunde Sincere-Home",
+ ctx:"Tweede offerte op stoom. 56.000 m², 800 man, 437 patenten. LET OP: eigen Europees merk SALAV (salav.fr).",
+ fob:"",
+ pr:{"t": "B", "l": "Belangrijk", "o": 4.65, "rol": "tweede offerte op stoom"},
+ art:[["Kledingstomer handmodel", "€64,95"], ["Stoomreiniger 10-in-1", "€94,95"], ["Stoomreiniger PRO 1500W", "€179,00"], ["Kledingstomer staand 1500W", "€42,95"], ["Handstoomreiniger 1350W", "€59,95"], ["Stoommop 2-in-1", "€69,95"], ["Hondendeken auto beschermhoes", "€24,95"], ["Kattenvoerautomaat 4L app", "€54,95"], ["Kledingstomer staand 2200W", "€159,95"], ["Drinkfontein kat draadloos", "€31,95"]],
+ v:["EERST: is SALAV actief in NL, BE, DE, FR, IT of ES?","Zo ja: welke categorieën blijven vrij voor private label?","Kledingstomer staand 2200W + handmodel","HUISDIERLIJN \u2014 zelfreinigende kattenbak, voerautomaat of drinkfontein erbij? Prijs + MOQ. Filters van de drinkfontein los leverbaar?"]},
+{d:"MA-ocht",t:"",st:"26b-951",n:"Zhongshan Topson",
+ ctx:"VIJF categorieën in één stand: torenventilator, luchtkoeler, luchtbevochtiger, kachel, luchtreiniger. Eigen motorproductie.",
+ fob:"",
+ pr:{"t": "B", "l": "Belangrijk", "o": 3.11, "rol": ""},
+ art:[["Torenventilator 117cm afstandsbed.", "€179,95"], ["Torenventilator 82cm", "€74,95"], ["Plafondventilator met LED-verlichting", "€119,95"], ["Luchtbevochtiger 2,5L volume", "€44,95"], ["Keramische kachel 2000W", "€69,95"], ["Terrasverwarmer infrarood 2000W", "€84,95"], ["Terrasverwarmer infrarood 3000W wifi", "€189,95"], ["Elektrische sfeerhaard 2000W", "€139,95"], ["Luchtbevochtiger 4L top-fill", "€49,95"], ["Luchtbevochtiger 3-in-1 top-filling", "€109,95"]],
+ v:["Complete prijslijst op alle vijf","Torenventilator 110-120cm met afstandsbediening","Luchtbevochtiger top-filling 3-in-1","Eigen motor: wat betekent dat voor garantie?"]},
+{d:"MA-ocht",t:"",st:"26b-915",n:"Ningbo Yutong",
+ ctx:"Koelbox €1,0M (D2C 84%; Dometic en Mobicool ontbreken op Bol) + mini-koelkast €992k (D2C 96%) + drankkoelkast + ijsmachine. Xie Danqing, yutong@cn-yutong.com",
+ fob:"",
+ pr:{"t": "B", "l": "Belangrijk", "o": 2.89, "rol": ""},
+ art:[["Mini koelkast 46L minibar", "€119,95"], ["Koelbox elektrisch groot 40L", "€109,00"], ["Elektrische koelbox 40L", "€89,95"], ["Koelbox elektrisch 12V/230V 24L", "€64,95"], ["Mini koelkast 10L skincare/auto", "€34,95"], ["Elektrische koelbox 20-25L", "€54,95"], ["Drankkoelkast glazen deur 46L", "€149,95"]],
+ v:["Prijs op 10L, 20-25L, 40L en 46L","Thermo-elektrisch én compressor?","Drankkoelkast met glazen deur","Mini-koelkast skincare 10L"]},
+{d:"MA-ocht",t:"",st:"26b-891",n:"Ningbo Putian Life",
+ ctx:"Zelfde drie als Yiwu Kemei — tweede offerte op persoonlijke verzorging. Alleen zinvol NÁ Kemei.",
+ fob:"",
+ pr:{"t": "B", "l": "Belangrijk", "o": 3.38, "rol": "tweede offerte naast Kemei"},
+ art:[["Tondeuse draadloos hoofdhaar+baard", "€54,95"], ["Scheerapparaat 8-in-1 hoofd+baard", "€49,95"], ["Airstyler 5-in-1 multistyler", "€119,95"], ["Fohn ionisch 110.000rpm + diffuser", "€84,95"], ["Airstyler 8-in-1 multistyler", "€139,95"], ["Fohn premium 2400W + diffuser", "€129,95"], ["Neustrimmer oplaadbaar", "€13,95"], ["Airstyler 6-in-1 Airwrap-alt", "€109,95"], ["Head-shaver 7D IPX6", "€49,95"], ["Nagelfrees 35.000tpm 13-in-1", "€34,95"], ["Fohnborstel 3-in-1", "€24,95"], ["Stijltang wet-to-dry 2-in-1", "€99,95"]],
+ v:["Zelfde drie prijzen als bij Kemei","Wat doet u wat Kemei niet doet?","MOQ per model"]},
+{d:"MA-ocht",t:"",st:"26b-819",n:"Ningbo SH Appliance Tech",
+ ctx:"Blender + ijsmachine + sodamaker + koffiezetter. 900.000 stuks/jr. DE BLENDERVRAAG: winnende schap draait op 1800-2000W met 2L kan; Midea kan dat niet in 230V.",
+ fob:"",
+ pr:{"t": "B", "l": "Belangrijk", "o": 2.45, "rol": ""},
+ art:[["Blender 1000W hoge snelheid", "€74,95"], ["Blender 1300W 1,5L glas + to-go", "€69,95"], ["Blender 1,5L glas", "€59,95"], ["Blender 2000W 2L ijscrusher", "€78,95"]],
+ v:["HOOGSTE vermogen in 230V — onder 1500W niet interessant","2L glazen kan met ijscrusher + to-go beker","IJsmachine: reservoir en kg/24u","Sodamaker: prijs en MOQ"]},
+{d:"MA-ocht",t:"",st:"26b-793",n:"Hangzhou Honor Industry",
+ ctx:"Profiel is twee woorden: TV BRACKET. Derde offerte op de beugel. Wei Zhang, jeff@officehy.com",
+ fob:"",
+ pr:{"t": "C", "l": "De moeite waard", "o": 1.53, "rol": "derde offerte op de beugel"},
+ art:[["TV beugel full motion 26-55", "€54,95"], ["TV-muurbeugel full-motion 26-55\"", "€34,95"], ["Monitorarm 2 schermen gasveer", "€49,95"], ["TV-muurbeugel full-motion 37-90\" XL", "€44,95"], ["Zit-sta bureau elektrisch 140x70", "€119,95"], ["TV standaard vloer 26-55", "€37,95"], ["Zit-sta bureauframe elektrisch", "€94,95"], ["Monitor arm 2 schermen", "€29,95"]],
+ v:["Prijs op vijf maten","Draagvermogen + testrapport","Stuks per 40HQ","Ook monitorarmen?"]},
+{d:"MA-ocht",t:"",st:"26c-162",n:"Lieko Industrial \u2014 hal 26c",
+ ctx:"NIEUW, HAL 26c (stond niet in het plan). Gevonden op phone accessories; profiel nog niet nagelezen \u2014 dit is verkennen. Telefoonhouder auto en fiets = 4 artikelen, \u20ac1,1M, nul leveranciers. Ligt naast HENCA (200) en Oriental Hero (240): \u00e9\u00e9n wandeling, drie standen.",
+ fob:"",
+ pr:{"t": "C", "l": "De moeite waard", "o": 1.12, "rol": "profiel niet nagelezen"},
+ art:[["Telefoonhouder auto sterk", "€21,95"], ["Telefoonhouder auto ventilatie", "€18,95"], ["Telefoonhouder fiets aluminium", "€21,95"], ["Telefoonhouder fiets robuust", "€24,95"]],
+ v:["Telefoonhouder auto: ventilatie, dashboard en magnetisch \u2014 prijs per type","Fietshouder aluminium: prijs en MOQ","Maakt u ook laders of powerbanks?","Verkoopt u zelf onder eigen merk in de EU?"]},
+{d:"MA-ocht",t:"",st:"26c-200",n:"HENCA (Heng Jia Yi Li) \u2014 hal 26c",
+ ctx:"NIEUW, HAL 26c. 2004, HK-kantoor + ISO9001-fabriek Longgang. Begonnen met telefoonladers en Apple MFi; sinds 2016 SUPERCONDENSATOR-JUMPSTARTERS, powerstations, EPS, omvormers, EV-laders. Jumpstarter compact + 4-in-1 = \u20ac1,1M, nul leveranciers. Supercondensator i.p.v. lithium = verkoopargument: loopt niet leeg in de winter.",
+ fob:"",
+ pr:{"t": "C", "l": "De moeite waard", "o": 1.14, "rol": ""},
+ art:[["Jumpstarter 12V compact", "€64,95"], ["Jumpstarter 12V 4-in-1", "€74,95"], ["Acculader 12V auto/motor", "€24,95"]],
+ v:["Supercondensator versus lithium: prijsverschil en piekstroom","Prijs op 500/1.000/3.000 voor compact en 4-in-1","Draagbare powerstation \u2014 aparte categorie voor ons waard?","Verkoopt HENCA zelf onder eigen merk in de EU?"]},
+{d:"MA-ocht",t:"",st:"26c-240",n:"Dongguan Oriental Hero \u2014 hal 26c",
+ ctx:"NIEUW, HAL 26c. 1999, hightech, gespecialiseerd in voedingen: PD-laders, batterijladers, AC/DC-adapters, autoladers en POWERBANKS. Eigen ontwerp- en gebruiksmodelpatenten. HET GROOTSTE GAT: 8 powerbanks (\u20ac5,4M) + 7 laders/adapters (\u20ac2,3M) hadden nul leveranciers.",
+ fob:"",
+ pr:{"t": "A", "l": "Topprioriteit", "o": 8.07, "rol": ""},
+ art:[["Powerbank 20.000mAh 22,5W", "€24,95"], ["Powerbank 27.000mAh 30W ultra", "€32,95"], ["Powerbank 30.000mAh", "€34,95"], ["Powerbank 10.000mAh MagSafe LED", "€29,95"], ["Snellader 20W USB-C", "€19,95"], ["Powerbank 20.000 LED-display", "€31,95"], ["Snellader 45W USB-C 2 poorten", "€21,95"], ["SD kaartlezer USB-C", "€10,95"], ["USB-C snellader 65W 3-in-1", "€24,95"], ["Draadloze powerbank MagSafe 10.000", "€29,95"], ["USB-C adapter 30W", "€15,95"], ["Powerbank zonne-energie 30.000", "€52,95"], ["Powerbank 40.000mAh ingeb. kabels", "€39,95"], ["Draadloze oplader 15W", "€15,95"], ["USB-C hub 13-in-1 docking", "€39,95"], ["Laptoplader universeel", "€29,95"]],
+ v:["Powerbank 20.000 / 27.000 / 30.000 mAh: prijs op 500/1.000/3.000","Welke cellen, en certificering voor luchtvracht en EU-verkoop?","Snellader 20W / 45W / 65W USB-C: prijslijst","Kunnen wij als fabrikant op het typeplaatje? (batterijregistratie ligt bij ons)"]},
+{d:"MA-ocht",t:"",st:"26b-843",n:"Xiamen Emoka Health Sci-Tech",
+ ctx:"NIEUW, gevonden op massager \u00e9n naaimachine \u2014 profiel niet nagelezen, dus dit is verkennen. Ligt in 26b op je maandagochtendroute. Naaimachine is \u00e9\u00e9n artikel dat nu nul leveranciers heeft; massage is de tweede offerte naast Red and Black (26a-439).",
+ fob:"",
+ pr:{"t": "C", "l": "De moeite waard", "o": 1.9, "rol": "profiel niet nagelezen"},
+ art:[["Massagepistool PRO 30 standen", "€59,95"], ["Shiatsu massagestoel-opzetstuk", "€169,95"], ["Massagekussen shiatsu draadloos", "€41,95"], ["Shiatsu massagekussen nek/rug", "€49,95"], ["Massagepistool mini draagbaar", "€32,95"], ["Naaimachine 18 steken LED", "€149,00"], ["Massagepistool infrarood + warmte", "€94,95"], ["Voetmassage shiatsu + warmte", "€119,00"]],
+ v:["Wat maakt u precies \u2014 massage, naaimachines, of allebei?","Naaimachine 18 steken met LED: prijs op 500/1.000/3.000 en MOQ","Massagepistool en -kussen: prijs, als tweede offerte naast 26a-439","Verkoopt u zelf onder eigen merk in de EU?"]},
+{d:"MA-ocht",t:"",st:"26c-238",n:"Dongguan Novo Smart Electric \u2014 hal 26c",
+ ctx:"NIEUW, HAL 26c, gevonden op scale \u2014 profiel niet nagelezen. Weegschalen zijn 8 artikelen \u00e0 \u20ac2,6M met nul leveranciers; dit is de enige aanwijzing die we hebben. Ligt in dezelfde gang als Lieko (162), HENCA (200) en Oriental Hero (240), dus het kost je vijf minuten extra.",
+ fob:"",
+ pr:{"t": "B", "l": "Belangrijk", "o": 2.76, "rol": "profiel niet nagelezen"},
+ art:[["Weegschaal LED lichaamsanalyse", "€37,95"], ["Weegschaal basis digitaal", "€26,95"], ["Weegschaal S9 lichaamsanalyse", "€32,95"], ["Weegschaal 8-elektrode handsensor", "€74,95"], ["Weegschaal C3 basis", "€19,95"], ["Keukenweegschaal digitaal", "€19,95"], ["Weegschaal premium 8-el. X11", "€72,95"], ["Weegschaal mid X7", "€52,95"]],
+ v:["Maakt u personenweegschalen met lichaamsanalyse (bio-impedantie)?","8-elektrode met handsensoren \u2014 kunt u dat, en wat kost het?","Prijs op instap, mid en premium, op 500/1.000/3.000","App en bluetooth: eigen app of onze branding?"]},
+{d:"MA-mid",t:"15:15",st:"22-112",n:"Express Luck Europe Electric",
+ ctx:"HUIDIGE LEVERANCIER — beleefdheidsbezoek. We weten al wat we nodig hebben: de BASISMODELLEN 24, 32, 40 en 43 inch. Europese entiteit in Hongarije.",
+ fob:"",
+ v:["Prijs en levertijd op 24, 32, 40 en 43 inch basismodel","Roadmap 2027: wat verandert er aan die vier?","Levertijd vanuit Hongarije versus China","Leveren jullie ook beugels of standaards mee?"]},
+{d:"MA-mid",t:"15:45",st:"22-105",n:"FITUEYES",
+ ctx:"NIEUW. Maakt tv-standaards, muurbeugels en tv-meubels. TV-beugel = €1,24M/jr met D2C 90%. Derde offerte náást Ningbo Seeking en Hangzhou Honor.",
+ fob:"",
+ pr:{"t": "C", "l": "De moeite waard", "o": 1.53, "rol": "derde offerte op de beugel"},
+ art:[["TV beugel full motion 26-55", "€54,95"], ["TV-muurbeugel full-motion 26-55\"", "€34,95"], ["Monitorarm 2 schermen gasveer", "€49,95"], ["TV-muurbeugel full-motion 37-90\" XL", "€44,95"], ["Zit-sta bureau elektrisch 140x70", "€119,95"], ["TV standaard vloer 26-55", "€37,95"], ["Zit-sta bureauframe elektrisch", "€94,95"], ["Monitor arm 2 schermen", "€29,95"]],
+ v:["Prijs op vijf maten: 13-42 t/m 37-90 inch","Draagvermogen per maat + testrapport","Stuks per 40HQ","Ook monitorarmen en tv-meubels?"]},
+{d:"MA-mid",t:"16:15",st:"22-115",n:"Frameo A/S",
+ ctx:"Deense softwarepartij, 2015. Eigen tekst: 200+ partnermerken die wifi-fotolijsten met Frameo maken, in 30+ landen. Categorie €3,10M/jr; Denver pakt €2,3M. Lightcomm-hardwareofferte ligt klaar.",
+ fob:"",
+ pr:{"t": "D", "l": "Kort houden", "o": 0.73, "rol": ""},
+ art:[["Digitale fotolijst 10.1\" wifi Frameo", "€64,95"], ["Digitale fotolijst 15.6\" XL", "€129,95"]],
+ v:["Hoe word je partnermerk? Voorwaarden, kosten, doorlooptijd","Werkt Frameo met Lightcomm / RK3326S? Minimumspecs?","Hoeveel partners in NL en BE?","Welke maten: 10,1 / 15,6 / 21,5 inch?"]},
+{d:"MA-mid",t:"16:45",st:"23-101",n:"Metz (Skyworth) — hal 23",
+ ctx:"BELANGRIJK ALS VESTEL WEGVALT. Metz Consumer Electronics, Neurenberg — de Duitse arm van Skyworth. Ernaast STRONG (23-103) en Hisense (23-102), dus hal 23 is één bezoek.",
+ fob:"",
+ v:["Wie is de contactpersoon voor ODM / private label in de Benelux?","Basismodellen 24, 32, 40 en 43 inch — leverbaar en tegen welke prijs?","MOQ per maat en levertijd","Kunnen we onder Salora leveren, met eigen modelnummers?"]},
+{d:"MA-mid",t:"17:20",st:"5.1-101",n:"Midea Electric Trading (Singapore)",
+ ctx:"HUIDIGE LEVERANCIER — reken op een LANGER gesprek, zeker als de juiste mensen er niet zijn. Vijf catalogi (461 modellen) ontvangen; streng gemeten blijven er ~50 over. Induction-catalogus (69) levert nul. COMFEE is hun eigen merk: 115 listings op Amazon DE.",
+ fob:"",
+ v:["ALS DE JUISTE MENSEN ER NIET ZIJN: namen, mail en WeChat van de SDA-inkoopmensen, en meteen een videocall inplannen","BL1508W: bestaat er een 220-240V CE-versie? (1500W / 2L / 4 voorprogramma's)","Airfryer: staffelprijzen uit het Albers-voorstel van 10 juni","In welke EU-landen verkoopt Midea of COMFEE zélf? (niet om exclusiviteit te vragen — om te weten waar we NIET tegenover ze gaan staan)"]},
+{d:"reserve",t:"",st:"11.1-138",n:"Klinsmann",
+ ctx:"VANGNET. Robotstofzuigers, draadloze steelstofzuigers, spot cleaners, vloerwassers. GS/CB/CE/FCC/RoHS/ERP/REACH/RED. Dekt onze #1 én #3.",
+ fob:"",
+ v:["Bent u fabrikant of merk?","Spot cleaner: gescheiden tanks schoon/vuil?","Steelstofzuiger: hoogste kPa en accuduur","Prijs op 500/1.000/3.000 en MOQ"]},
+{d:"reserve",t:"",st:"10.1-123",n:"DEWE",
+ ctx:"Robots + kledingstomer + hair styler. Nora Chen, Leo Liu, Sophia Rao. Airstyler = €3,16M/jr; MAE haalt €568k met één model van €134,60.",
+ fob:"",
+ pr:{"t": "D", "l": "Kort houden", "o": 0.16, "rol": "vangnet"},
+ art:[["Raamrobot 6500Pa sproeifunctie", "€159,00"]],
+ v:["RAAMWASROBOT \u2014 prijs, MOQ, afstandsbediening. Enige fabrikant op de lijst voor deze categorie (MEDEK MDLV0126)","Airstyler 5-in-1 en 8-in-1: prijs, MOQ, opzetstukken","Diffuser standaard erbij?","Kledingstomer hand en staand","Verkoopt u zelf onder eigen merk in de EU?"]},
+{d:"reserve",t:"",st:"1.2-200",n:"HUAYU",
+ ctx:"1996, Ningbo, 2.500 man, 80 R&D-ingenieurs. Tosti, contactgrills, airfryers, stoomstrijkijzers, kledingstomers. Contactgrill = €3,98M/jr; Safecourt haalt €501k met twee modellen van €87.",
+ fob:"",
+ pr:{"t": "B", "l": "Belangrijk", "o": 3.07, "rol": "vangnet"},
+ art:[["Frituurpan 3L koude zone", "€39,95"], ["Frituurpan dubbel 2x3L", "€59,95"], ["Tosti/panini apparaat XL", "€49,95"], ["Tosti/panini premium RVS", "€84,95"], ["Contactgrill uitneembare platen", "€79,95"], ["Airfryer 6L digitaal", "€89,95"], ["Airfryer oven 6-in-1 PFAS-vrij", "€184,00"], ["Stoomstrijkijzer stoomgenerator", "€69,95"]],
+ v:["Contactgrill met uitneembare platen — prijs en MOQ","Vaatwasserbestendig? Dat is het koopargument op €87","Kledingstomer hand en staand","Verkoopt HUAYU zelf in de EU?"]},
+{d:"na",t:"",st:"n.v.t.",n:"MEDEK France \u2014 n\u00e1 de beurs",
+ ctx:"STAAT NIET OP IFA (gecontroleerd). Franse groothandel, \u20ac3,86M, NUL werknemers \u2014 geen fabrikant. 21 van hun 83 producten komen door onze meetlat. Leg hun prijs naast de FOB s die je hier ophaalt. Magnetron \u20ac4,22M is de enige regel waar niemand op de beurs staat.",
+ fob:"",
+ pr:{"t": "C", "l": "De moeite waard", "o": 1.74, "rol": "na de beurs"},
+ art:[["Combimagnetron 23L hetelucht+grill", "€119,95"], ["Magnetron solo 20L 800W", "€64,95"], ["Keukenmachine 2000W 6,2L", "€79,95"], ["Keukenmachine 2000W", "€84,95"]],
+ v:["Prijs op de 7 eerste-keusproducten: 100 / 500 / 1.000 stuks","MOQ, gemengd per container mogelijk?","Technisch dossier + CE-verklaring mee \u2014 kunnen WIJ als fabrikant op het typeplaatje?","kPa, watt, looptijd per stofzuiger \u2014 op vol vermogen","PAS HIERNA: bij welke fabrieken zitten deze modellen, en kunnen we volume bundelen?","Verkopen jullie in NL of BE, en via welke kanalen?"]},
+];
+const ZONDER={"Keuken": [["Melkopschuimer glas premium", "€84,95"], ["Smart eierkoker LCD + timer", "€29,95"], ["Inductie kookplaat 2 pits", "€94,95"], ["Melkopschuimer basis RVS", "€34,95"], ["Vershoudbakjes glas 6 stuks", "€31,95"], ["Meal prep bakjes glas 6st", "€29,95"], ["Slow juicer", "€134,00"], ["Waterkoker met temperatuurregeling", "€29,95"], ["Broodrooster retro 4-sleuf", "€54,95"], ["Meal prep bakjes set groot", "€42,95"], ["Slowjuicer XL 1000ml", "€64,95"], ["Waterkoker retro dubbelwandig", "€39,95"], ["Elektrische kookplaat 2 pits", "€49,95"], ["Koffiecups houder", "€24,95"], ["Multicooker 9-in-1 snelkookpan", "€84,95"], ["Heetwaterdispenser instant", "€69,95"], ["Slowcooker 6L digitaal", "€69,95"]], "Auto": [["CarPlay scherm 7 inch", "€64,95"], ["Elektrische bandenpomp 10,5 bar", "€32,95"], ["CarPlay scherm 10.26 inch", "€84,95"], ["Dashcam 4K voor+achter", "€84,95"], ["Compressor bandenpomp", "€34,95"], ["Dashcam dual Full HD", "€44,95"]], "WLA-creatief": [["Magnetic tiles 120 stuks", "€32,95"], ["Magnetic tiles 100 stuks", "€26,95"], ["Magnetic tiles racebaan 126st", "€39,95"], ["Magnetic tiles XL 200 stuks", "€49,95"], ["Twinmarkers 262 stuks", "€41,95"], ["Twinmarkers 120 stuks", "€29,95"], ["Twinmarkers 80 stuks", "€21,95"], ["Magnetic tiles 80 stuks", "€24,95"]], "Gadget": [["Android TV box 4K HDR", "€44,95"], ["Laptop sleeve met vak", "€26,95"], ["Pasjeshouder RFID uitschuifbaar", "€16,95"], ["Airduster elektrisch 50.000rpm", "€29,95"], ["Weerstation wifi kleurendisplay", "€64,95"], ["Papierversnipperaar compact", "€32,95"]], "Huis": [["Ultrasoonreiniger 660ml", "€44,95"], ["Wake-up light premium", "€59,95"], ["Wake-up light basis", "€37,95"], ["Elektrische onderdeken 1-persoons", "€59,95"], ["Warmtedeken 130x180 Nordic", "€49,95"], ["Elektrische vliegenmepper 180gr", "€42,95"], ["Elektrische onderdeken 2-persoons", "€99,95"]], "Kind": [["Babyfoon 5in scherm zonder wifi", "€64,95"], ["Magnetische tegels 100 stuks", "€29,95"]], "Audio&wear": [["Mini beamer 1080p Android", "€129,00"], ["Wekkerradio digitaal", "€19,95"], ["DVD-speler HDMI Full HD", "€54,95"], ["Wekkerradio met projectie", "€31,95"]], "Health": [["Roeitrainer met trainingscomputer", "€299,00"], ["Weerstandsbanden set + tas", "€13,95"], ["Waterflosser draadloos 300ml", "€34,95"], ["Neusstrips 100 stuks", "€12,95"]]};
+const FOBENC={"s": "wgTq1sxTFWRDmsgjevww2Q==", "n": "SEQlcizbqxSnp7Gb", "c": "NVbub+YktACCSmXlnQz1skLKZnSWgSTzOZHEggDeZgU9Br8Iq9sSUGA06fOwZW97Er8ZK1BmduD78nlS2qX2D7FhlJAlP+LbFOoeXcxOWkMsQIPNYWkiy2exRhjG4loZ0jaHMl2aRAQ0Y/6fJNJNgh50jimZHVe3ATbHkXFUthRruN1IxoU2UD3yDXKHSz3QiI22nMRRrlk6d0ZyrMtc1a+RIRi32NDG7Zn1sTL86DYX9bGQFq9XCwXUJw+e4M9RKINTZjc2Lb/7LajeqKDl6n2l5vyfVye2Dk+ULgodxmRZCgmzhDzkdA2fg+fjNIjBila7OX4sM7SCdQjQip6WiS6x6+8eoI4ADEASyFXntF8Aak3s1V0hxVp2Fzi+u92chAjrArjKhuvmka/guGoJAIE96iKLIGWB5S4c3dsoYXFLMOyfyiWzubx2S1cxBF5wucZRe0myDtoajWIdRSgKM716q5METGlLFoeRhYG8KqxAZYtOsjZdSFoRPQyl9HisrZowgKxkEe/c3bw7aXpOji/4ohUPghoK0HaZql9qJPbE25uKgczK9Qp8OYCOdRDO57atkcdu4VHOWLrwlG14rFRX3xA9PU1jjsUWEOZURK2hNer5ivz1OWbP1OwJU6mJBNrsy5aHE4AJn1dyL7OVfcPm7/95IHV9NCayG9nXasP9ZDwp3oPpUC3tfnUAoWR6X3MOmt6y3AjqRQb6sXfXy7PiEEOlva19UJVfYyfxT2y0zm3MnrTL9pM1w8pypIDq9F5azW/UwIioZYp6msZY8Wc48Rk/fCKIvZDf+2HHoN5lez6EgUo6vZvVzu1srqYoTISecchjxKDDHSNCP5mEO0dJpiEuN++wIl8W1NSue2pmMHFtXgUAZu3NNXxIACCi078Y89nhIcYpGwWeS6XWwoGMWqCfW3sSso1GrTtSnNk3vLz26RDX4+aIOd0WaBRcBrCdi2GWjOzSIZPJmTpIklmlBLkB/0MpTDJSYw8pJ6SrfVJXTHd3x66u+vQlH4SFRWMiyuNA5oHsWL5yQW8Ift4CyiGCL9bUphNZ9WnFMpg39s2xMNE2PCgTGvP/GbGTdL1wG8/tVwKbWjdjSSpbdsuXjSJhP2ejAfpd8slFSeHmJdfRQ2jAVKRRGAf829zIsfr9logfToOYu9FYEQEo0Qxv//ZzeqB0kJ8gZNTDStiYUXdS9SqjgPH+1CGe9j+9Xno/sZm6ZMJelLrATjd1xTC9DP6VCStJhpMbHY4t5kF9yfUfa4/hW+/9StZmWCvZdwaB2x3oyf8gKkrFulEiN4uNx27i1NNf8itrUa2tUbwbv+I2Dfq2iGpEojol8hhJaKbLxroKH3W31RJarToygU/8paIYW1V8u5/2o8a3rGuDEhTZehf+e2v8r9KG7G0ZKuc9kBZoXtMiPE0HbLN3EhiTK0xPJrJ4Pw30lIPm8WyJG1QVUxg0Bftf97CXrz0xDcWDW8xVIyG+e/r/NEKQIrsELT2hPoig7x9dzTy3Zig168rQTMYQxplqCA4F+tnq7glVJ2DigQeFF3Axv/aNs0HUjR5KhdgR/6//2lZUL6V/pXzcFDV0bb6CkMgKiUic6/T2KfzqiY2vDU0C2W29BZ7sQKleN7RiBhEh51lQypbFk/yVH8OqS6CaN4CRGzDsPUgjsxzRzdWx7O3tnMLJ+3quc5ju5MaU8cxzNc0QEhejepX0h5roAYjIeadyk0J0kUU+UXrsQcc22ecI85z/2hP4mFqPxy/YWmXu8DO+THA2FxuCLxES7cCTFvLVJxUL5OzB6AexjnLjQ+Kpo429r+Lhs2Ap5v7wHslJQLBpGg2YAv3+PSKLSokRD+MCR1DxhDSve9qaopnQcthqg9I7AnqGpyu1G79TaRhaT21liXvfS6j4B7bQ4m2L0ISZpmVTXUzxKnsGyyyrVODIQp7gTEIvOvzjQunaQtiHbJWB2dYvK4z7TaU2ui88fM8rjHFZy6OuXD2AgIRGoehIE4lJ0NuLOrYXf04YmOVFxpZw29PIfV3jeWU8i1W3+VvZ8C6S7pERlu6Ewq0k/CCS0vQF4YRwqwz3za2m333wmJRznDxs3q2jgQuLpjEUyFwace1tpe2/AEUlw2hEcFBi7esn4n5iGCkLgY9J8dEBjRbbMNlwyAG7uSrG5xj5l7RgyPsYg2Zib9z+2IRrVlH6scFRGwAVnZT85NLeiEsDhPcSwUrUrTrJxawjeIo9Jkof/8nyPx6kSST+XlVdifgcWiaz+NIasGaQygSOHqeFphGgUL2RQV8mtENAUig4knQf9NR13L3QMDmYh2LLE3M/HwvmKCsH5rwlJCcbEE/SEHb6Rr7dwcR1kObFFurAhAGDhD8N/iYtqoMmARnhzH+E1YltULikTBYPmNTi+OnZKBwH8s4l40V3aKYoWO+Qoya3BL8Ei24JZxT0TgXBDZLtDwzd+V7Kt2dPDP2watYLtqCHoPvxLIMw25JaN3KT0XUf//3MQxCfL47F/CuG62fmI4JuQSOUYP28T6tQzpYrcPWTnV4ljHdwIydWG0bC4qYHGP/q9Fr/3+aFW3ftoaJ6/gmQTLkHcCy5ec1tWiHqYosNzirpeC0RBNDHQk3NpGrlNV/p9k4SlaakqcFgsFSpAUIlenmjxa/1uy8Q++/rdd5Rx74PLvdXr5USXb4FPNCrp2ecbVbTzyknfoAe23VqelNuSf0RviC4xfhiPBMZ6XEs17v/bZB7QyXvBe/Ao0mvr8U5wJP6QKBPzToIrH4BUd0MrtMBHzifDV3r3EPpamCwxiyVnG4+9QkwM3sWmgRYxtiekOTnFrX3JSCgDT75ch4VBDD0x40KL1r/3+D0PslK1tZ0hus3hA1FxtbKbXx1+NbAa338EpfWsoeyeBkU9D5s8wzxhMFwE6L83UafAiQzSCe5RMM6gjbbASSzE2+hHpPfUquCPbWunX8aw2SKri00RaOiGISvZFrgs/B+vODNeobaqoIpIWbqaMOhnwZspquDBN9X1uyyojJruLM0bUvjlfkTDqjMtkEPcZOEaATvdiA7xha5ZflvGwt+W2tKcFrwvUoJ87IGXM/57f91Es64IHfyUnNgroBUGYMpHaH7qj5aqE7c71OHvhL8uQR/9GqpKonDT54gcX3uVhfORx+QyhFVF4aEwe5gSNELzQd5zUmLhWTTU0lqKsqgWaFrRwNK2+1Q3fNbMn/IHC6RCVW42l/1ubuYPoJqmExrXQecI6+SCGAEV1jH5g3MbZY0tY5vWRDal2OO5RZCuaQSo1zhMZT3AXGx/rKURYHKs28L422G0XX2LvOJHki078OzG+XjPN6IFm0HR++S5LfS29bNfdj6ib98kjAs10Y5VixZRjXxwSSCnDrUyYHh/2zBK//3OmuRtEZiON7XtKoAqHvoOoprvuEShFeFsEu/n5Kpi4i11YH7XWSK6mrky5KEurxxZxwF+WsBmndTYv3KhhD956wOzkgwGqL9ZqYABGWwTzXRi7zMmfKBbIfSiZuemRakwsVAoDe1VpeQZqZnAb4YHp0CYZGuW/maBwHdFrb0wDbYwVXB5mvZzs6qd8PN7zW2+FLJoJWocAcU8bjurjwjYl1WqN7hWA5O8I5upmiZgNry2yoI+M5x9pYSMX0AKy/x3/0tx/L45xldLedFZOnIgt9z3XreCPmGYag2wUSG/02+4sqBVHl/UuK6zD9pML79pZvW0Pb3w8H2D+4/yrRtN3NqjOqt2XOjCrYqO9VexKBdFf2GmL63vOEHlUFWR3aMduJT0xsQH2hiE0J0XygTYt7aS0lMX8Mkdek5SdHsYLQflRXruj+zG0UVQFcY17UMB5WTSEwoM31ZDO05Cr1+e6ud50paFVSEvto6uHV/8eP7e6JnLruGvjMbctVsjztANh3sAweui8OkELDES+eKifiSmPnZJkNnOQwz+rorJ7nVKaLJGgFhv5C5gCvqY41/nX1vboAaomdUGCFVCjT0ROJgVf+rr9LXTWwd+fZqRWEeqOLCg89laQolH93eNF8vzdHV+CUdG1SP25uDx16WMxZs4KxXBzFGhvZe9SbX9sMMKs/z5IR3xBfvP4CttWktz0DyOZYdx+tv68aWIplaoirZfHMKouFcpzM6De6ZdgKJad5IerOjy9LY2f4KklVs0ntDczMZLfYVfO7zIKa9f9IRJbD4SoMQSJnmDlhX7jIxTgAONXgBMhVLucrNiuMWHFf7oNVEKWP+jDa/RrmdiEYXjEj0Tlczi6Hgfd/n+Glt+lgU0slXQ+xnb1pp19DxbDjOoV8YzvIhc4LdnzXHKVKP93rgSTMsV6FfcL7RdPnK4RZ/3SeQQOx36MGe3X4uyv1UV92Dn+jOeRXgxCCPU1O18RI6x66xoWXi5XGhjP1dD84iciLxChUluyWExrUTEK5jQq2mVMShm5D2bV6pcB25r4Zbra45Erl3dQd6fIKxfnv8X3T7WGPyUKVliGzny72nC6tPGchwGxc0IsoHVu/KR6wtZuWYi+hJaoKFPttTfRF7hwXncLUfbDU0WDyCfbnoYoTcEF188R/LmpZaP9TzqafcSJ+K6pxkRN8s76MuOrivadTAlldHrgJWRgFmEWq5DsbfSE4k0h0PiFLFB4w4HQ4/dsKVjHtzBmonv730OQbuG5AFGY65ZYKmbqkk1khNWJuVaBEJk7nA9eyayHQ+ecNXUVeUNufOi8mogGSTbxrk4lDnn03ZO7pliyyqEQRvEam46ZrzCBVShWO4qbyhuA+WT+lSlMmnRvb30xgjw1K7LXy+Qm+x2RytV7YyK15q3zsU72S5ZkN3+60rJPnWzHs6hrGaMcvL3HoJM48d28pDmhYHppO219Ua8iZhDrPPBawlcarILOQuK7fhIIQFQMBxPKEJ3jbIVkFFlrlYYA23axFtTqU9ij5bwV+EVD45RTUWxw3fpzaoMHP1ekHDeIVbN08zKA3pbc0DW7xO2IYlwvRrj9euxnCJYFF4JFzJKJ7uPC5+Dv0em3+leb0IRgRoKlS9u6CvLFycffVIUZNdegZoWCENXt3GsV7vjr/yEvFSFtdsD2uFFWj4NG/SEu1SqdSFFo7yBMrCgO4RRfPja9VCAXcq+zDGwI/CtKIf5DLsB+9XD9L+46QvO962TfJrhSTW6pPaoY2H4ts8QLpk8MIaULRMpf6AstqsXTmXacX8W1JUW2/hzTUARak+nnLTwcyexH78+7DkLgC8fTz12t0U5IQH+dShWxFkJXu7ZSYtQAovbYHjz4+6e90zNL+jIS0f1aLKG/t8kdNT+0DVskEzLEAr6NZQC1sT/LH9774M8lvvJA1kSO11FfZTns7sGP0V4tUnzectB+z+WVz47iOTJARMcWXNDesfPyv5ApAr0dUTCVdqDiYpwYmD+K2nmlUX6uK4YC4oQAXc7A3bt7SMCMSWVdBX+c/QtVunam+dF0ZkDTGTNChWMFbIhpV8qRZ0Fs6IAFK5+KTO0+WGmRATZdFe/a3129JDqiUwbA4HBCOOQ6n+QQcUE3hPU2iZDFkoSpwpbJgMLrbgNYxt9Bqcng9ks6PUbEz4nACsiiiTPyCUKphNUj4uHthlArWTuV/PLgZsELk7kki/+d0PEEpHoXRGyqu+oQiCAjSLBvBMUPynNwqFuL6AzAsmVNdjxpa9+/++OFCkHHakwMT/tMV0lXMX3zjK5AUFZ8NdrYmiI+UA9OGdCwGpMiSh8jD3GIVkU5+Q7+gN5GfuXW/4UcK6vffhAtCmi9+F7EzgGRHOmiK7UGkqYaC3OHsr1pFdBrkoQ2HLhCgzbiUknohig1S/dCyg0q3V/LgBqtQSLkAq4MgzTv2U+5BoPFfDVKFl5DxUrm3dJJf1i1VUWcInyzZOWmPmd8fk19H8HE283Px0BHG319L6cBqKdNZ/l8oJs6uam2MnbxuAQcH0rzYZC7cObEi4XQzgls/loz96Cgaeb9B9rVKOFhGC4GJQOwQO6wxHfagfD+WNxXGQ2aitlz/51m6tTsL5dTOU1/nebgTiaDmZNevafk0cAIodsmhfn17BGIr3v9z3hakCoMeDblYk+jz2ZAuOAhxcLQnzO+9X4aRvopaSkzymqspoAdogi1sUnmYdqjF4HfEXtF6dRPEqLrreWMyPAnVR8yOCI2Tuoyv5m7e8TSM02YDYf/8M8TJd3tdHoevb+t0qQbSzHeXkMFHNyPR0f8jewNvauBFB1v9l7lT9uAiZfuIb4yBpBoOoEtggzSQkiQ9BxSi3Fwzdl+5GlZJOHhDJ0X8Jj/Z67QQhTiOrBfNmQWwSYweSecBqtfpkUvllxJHs0cEvZ10YSIpVuDNJTANDKTIme0TSAa2quK2f7cWK1laCzySttIVIOOSo5lxNbEY26MM99wrb85gLhGlXFoY7mBvnIeOMvC74hFBAO2+reBfVpUPmjjQSr1APMMKDXyDSHDkD7LYLcqxuiO6HTXCdEdg45YN1fmT2ZwLK4sh+8KWiKgku56uuyouyVR8GIvKDM9gWsoLzlDBZ/DpKJvRxk9dg4gVr1o4jVbDTt6/zuatEyW9noQbYgVfN1k6YdkcLDg+SrITfdUFPWSScObefs+ig2rKM/I8vmpUS2LZI9veuf3khQOP1Z1z0yAQp3t5vSfAmfZql/6QSuWcj3c1fVfKAaR+cNLq9rAKO8HY0JYXnqZX9mimC0wjY5G8r3/Nh83jqxxkFrJp1E0Yk+G5dTBZu8/YCepvUtHFZ9NL3fqDtz9413n5BQ31Tdkdl0HsHIrCXLYKn+MN8iqsEaJCN3EfoCYKXNcrLYm8pC2w35CKn39RewgD3fyH2brr+cq2lP5CPhBLBlKc0E6Fi8i8Dnp5rFZTsM70MJSqAgqqADdnn/jewz5bzU8rI5TXfoQfWyHpyz7RyLKFUAv84dX8OBDqd5EiPkGUbq6BmBUSW50psOiuaPj56iaqc+Zv5gP3IpdSkFKmrKyEiORHcqegjihq14gvRWsLXP3xKAU8SpR5kBVtt7wSKywlituBmE2hsZE82yYJLNul6NLkdUTN6DjxxCgP6CQBPoOtYVosldc27sG4FNebli5CkLN6irgYwlrIkyPhZBUJzKZMUwsRfHvyOPGOLAjRPaIU+45/ggImUoI7i3zyXrcnmh2wsMTJhy0Gg0H0r30rRbTT4bcev5bdxd3xUtco38lkhTTA+GM7tchkFGWkbpBw/nqb8Qna91xxZpFdXlKxm6D8In5+08CY2KfiA60ZJ0kcO7CgAwhpcoFVqp5z3Fk8e8AeqbqP3sQEvxLLZ3gwSn7p8s9qLF+i6/8STAy3ncfvbWtbzrHvKy7Z/MRHmSO1NYwk/HYLyL4vhnQZwnlPd44Mwc3wv9avwjyUIM0eE3nXaJRGW5AQ2UpmiVAX7iVebE4Q5A0E+PziVDUwYNRIrBGn+v8U0ozVq7PJpa1lLPWV7rDAfXv8++XZGHw8snT5ZEA2VdKnRw0FW6xUJiQes/TKqnlMOKGndU2bEde4YCNb52xba79as9Nh6WdUO7BDQfXMvOgmDs9xf/SEX9k9QKO+RgROt+S3GS98jGpcTHrigzqXABTh05Q9wStoAhJlMHTfvtpjAEUgpPT4G8eqGEJD+Vgx/i/xciX7537v9ay0kXYUyVHM/inMBFXWt+vxDdH5fUB6h47psi+LEDco2uO5rc8f1ASwHX/BYmir1Co5yiERccXZsqWucAPM5sSwRlKxvHLF7Qv11Pvo0mOSkIv7beq0pytcEgPeedXv34twEWQIj8YlG/3ycnVXXPna4G3P/+dFA/WY0RmN6fB7ub2eRFHDTyBuPvbXjEO38MVVmsZXN7T1VaV7XzKy+9aPBFMm1S5uzRLd9qMOg/d6WySwQL9EOc1DYLMs/Ynxxt/Jf4KLsDtXCRKgaCiL/JtxYUNKzOXhicbypbsbiOllj4luQFI068hThqmDqocpWmpz1OZtK/b4NNNU90jqG+e2xf43xqNONCKlJilSoC6efmABJ3u938Y0hOfsfJAkJp9VPJBjM/u2/v/CwPRJbXKY2W3VcPzL9zxs8Xa9UUtzWlqIO9eGZ0QW3hCWGpIu3AQbQ7n/kuP9TPrdjJ0zO7lfxc6P8x+ImUDQaV2Xtqg+NVmFJ/72VVYvGPcN3FJ1cx6Uvv9OHTXR4ubuMPH0v+XyWAKzZ4URCw+4WwRPa1UYPKLp6HzftDA1795dIAADLVYWfsAG0mo/9FdIIwxyP04VkbVmFpMNYjaQG6pd9QC5yVneJF57YgQyDTZuwQ/gD7Ec1dtiCiej7oM/G4RpZTk55oA6KAiMa/BTGY9MQTQwSJYaNRy3a/us9Adddeunu8Pbw8fi6Gnvhphyr47IkNOfaL5ZoXhPD7dQp4k59vwI5CHBQcVlJYnDoOIJXIy2K66WhTYv5v+9xvC+2mW8J/gTwMz1JiAjqITqA3/0WaPIkj83swvLW5ZtOCPXiZ7ln4vQt8+8+6MnLTnju6kyA3hhxjAxuAvbqY0mnwhN49IPUVTEu3OEXZExZWfn0H4A0tJxLGLKobS8a8p30dsKeoZfpOzf4zllmI335TMR9axYcgc0tHbrd63b7fQMNlloSJx1HrmXQYBcJWyWBjLPlyiti8+ZWn97IrGWLAv6nhaODZrRC40fWiykAKYKiCfISjy2MBeKOb9dO/yzrJ67LkY322Rc1Q8fxS3OCzP7Lz6I+ZJxFh7Tg5haiNU1SefzNtNWJYN72AokXyhxPT/zA7EoWX0AW7NvS/IaFH22QSflMvnlfM2t2yB3llu2/I9IuCFAVNp/a9/lDxfDavh2Lazr8XsdrgfjvmN8l5MNCJczYLgHS8Krvp9sencwrqWKQfUiUXDPRTN3eaTnPiOZ0XTaAl11bRF9uB/kKQj6Tno/4HxD2EduV+lBZdaUrgDyXllZQZtYgYVNxSL/QqB+EwI9VEX+oeAb0xfdOcuF9Up1D0qjsxEa80Sa1wdyjDNXrPgVO3phHesQmp0jHZoTh1s24qVeQVGyTMqarOcSOttXTGajPAtDv6ahj1wbxMSFTxLuXb4+w7J4VRj6Imz9zOlxAuHufSbc0MOIStkIHCCSj6umjAReyp5S+ZpbOgKwxHT2iY5wD5LMc44zxPOouqc4i6SogZmD8D+z4dH173b8Ef2yyFa9OmYYmip2wMiQbanXzpy/1NGtGwzXVvdATnPWu6Nn7Tdm4wZ4IcRl6O+o6fF1WnN2HEOpRDnEoh4wlg3kRpvdOJ55rFoDMDTFTWxTroaj3eHSfReaxnbKjt9gsh+wKuHZtPktHCEsn/EpnD7IQTWfVEQmX4lf3g50INWCVBAHMSoXnrGb819aajlHd2nHxbivM28Se7Cwnk90+wW6HngXr09stIeo+EpAomIG29znLAwZQ6KnIG93Mc0HrrDXHDxdhe2IZIaEnwCOUwzbC/PC3J/jbM7Nt37u+X7hqTHGg55OR0sLootIrhIWGLBt5YwRPI7/9Zi5m6TywrC5Lnag5tI9Q0Tx04mHw2lISxRL40ktbwHRTs4fKAls+uQBbiATwn6CVPxB8tHny//shgByoI8/TiUQvVn6jgw3TKzgYmRFWJeExKMJxwmw170+PjOMiuR/IW6pwrkwOjLj63ogP3jSfozIJ7O1HVqZzPzVNkptqBkilij779wfk0Sx5D5O+aPje+tumKjRg06jaTgI3ObsJ/BydXjoXQS2fLCz+YZzEhWYtji62bYk/i0NzmGTxp2VqHvuv8dsF07iYRkSAp2h5mvof97wyiSyXlEsTS1zv6WT12Lt6bfPY8YVr88h4U2+Pu9YDQIeElvr0m2AEpNC/U7azr7NchbDKTO96kRDB8faKP3QMPGinDmG6GsGZN8H+2kSgmp602wcikl0+9aBmM8jO+kJXegCdOCYSIMn9pY9EcEVah0umexC+ph/ff4Wshr9XRsyN23HTJrnI87jdd0OYThYnndZSjn1Kix8/+wArQQZljuHCanj3y12TLpjP+UlOIxsyO8iCt5WfJ6pwWPZbhJ4YXdRfp6926i3+2+FjyZOC6/6F+o+06LZD3KNS7kw+sF+2J8eXZLdOmTYm59mKq7NrOgIWhW7Y00aVVUEgsiSYxullCJrrxJss5IsCoK9yDrWMxyAlbKfYATs8J3jKpV3IlLNFJDsZRLqjMWFOyFCGBhsqQxjreRYMPqojO8miMU3WajDv1quok5BB2852jeDCDWS+NYwdunMPDe/fXGVBc5LFcAHbyFfP2AjPeBCsAla87gvZ1SvTIo2/SFN3QV4sLIDoKCIdvxjl5f/9N2CHtm0+hRzuBLce/hMFajV56grLDdCtFLvGDf2f1znIsRAZ40ymo+Z8Q0CW3SXoZu1f+USyClryIXGHcTLqRvTPmwxqB49WwO8MJ/9qL2faOBkzOXpobszfdsgazYkr3fZy9f/0FNjmEoGy+t4QHir+FCCl1hDKOa3TLpw/xMzahlFI2qjCdYSJJK6dxjEsBi8g6VDmBRVh5bFOdSHaa8tXwRuqj0t2lkL2rxMSUHkjd9m+ykWtTUetxX+GIv4as9/9q66bqWEKrnV2p5OjoRsnk9cPU7u5O81DizkzIW39w1YlcHpO9Yhp621Zt5WC2tmdvnYrzHlFM14FQIvov9m7C3bR84g1ph2rBsWmFMm0cfMZ3cT/zjp8m3Ft3+P9D33PY127zb7Fq5G4yImWcS1DSPojYnIVup08yNWMfsxoTO9/gChDLBJOhEVD2wYFqJRfOQyRbavB6shc9t8pK1eQzL0hizlsM/q1Wy7xGPwJ5fM8gwP1/ccFy65FFIvrYY+8LwePcz+aLl0f2kQuzqGofpM8+s1beUDzZQZUDeXTqi1EkmccwTuI6/6WHypI51b3leYnGYeYwv1JLHiBCG+Bgvxly4u9tin7dZ10CNJtsccrbbBaJxHlAsdPe4AK2DNZyQqj+u983JlWA+yKG+xEVktcde83GjJhdQGkF1mVn/+mjyUds2SfbzLUYCN1o81VYVt3ztREFIyWNcSjDMqC4yfyK4Yaw/yz0xKUKZb6PyAJbHbGVDoBTF6K6K9ebMB6vKs3M+QUr9GMwDqaBMRmxq/ynJQ2RO1zhtNrzLtU0DxFiKegG/u+csjQGbzhY9noS86ksuJhQUWTc/4fm5qxuzAK9aH/J6J1HSsqqoxwe+JCQqvuW2GQwzNta+EZF9g47S/rYBXEwEHK80ulbUHbRxzh0OLhNkLLlvfBPxXVlIVJCtWVuMfdIL4Ia/Q9SEFfpN7BuEnYXLBp6erCXtC6t0QLhSYRQR8UCo8VNKNp3j4lxVL4ypXUkyfjbN6xHOXiWwFKWgeggnkHq4lSYE7SyWRGz/q9NVLMufXCjlwKFAbOfFLG6Z22imuDnOpD4kRkqQmaxm/NCbdSDkgM/c876q0uc28jGaHkePdXP0w/eDfNrI7un7t7OnjwCvjoIoja5pOT8aKrGEGdB/ivFSPfFzqK2Q5FLfCxYon6kguhVtyBAtomDf4FZrrJoN6r/WT1q10atNP6ZXiK9XPO/DYEGYsW+AMl4xCOB+GUJKq9WLkayehhrmYS98oe2znRmLhsXzZsud5aVmM6L0Ytj0BpPpNjRgfrTqlNL/uclE3wTwl9Ux34F6k/XCkfBj4gGObHvA1e1LwNvGdfdjRxjxNi3JE891Zq7gJOlwU4Qwen693iRnvXknuhEm3CHx9lfJgvdkeZQ7rNe0hNoOUBy83oo7gyu8zpw6zBk3/VAuFmNikoNbVUUk+qfz6Azdkh/bGc5fLnaBo9sSrTAS99ur04xQIudF5NQZS8G8PfJHKHyV/tj5y4l2OZTTv4IhwxBoSJDhaIhFzV1RNDRAbvHj8WnvwKJEO8koohAMs5UWALB0t+Z9249nJHuJ/tTHWCCSJF/j/tyILgjbiYJ/DWjzAWnIVS7x8axTvvE7VvnfL/WpjjllfXjztEm8tytoFHkcaQtAo86RX1dwMkqHlZHli6OMcPZ8BVuyDa1gERP65v3WX5Xgp/k878gNn/qIWFK1ViVeJekfZtc0S8TKBKnDeXblf04OxK8keigT0Q3tTYjrepQ4A/CMkCzX6XG2Cz0Z2HC02Pjhbq6WpQFwyINasXANpL75ZnHj8MF0KK9GUmVPs5Rz95qDzkFJinf36wNNNDCD9s+jUzVd0cUVb/1WvHurWmAoPdZ6Mczbr4UoqZEagAyiyWCRd/bYkGOxBvehd/UyU+BmRUoqozcCUAiodPbCj5+cAFgXetUPnmECWRqq9p6nwCmi9W3cvaUCyLeoLl3V1CUn0GhMvgxy+YDu+iq224ElDIP3Ktg7CpyOLx3z74ccuy57JWOwUDsgcbNQNAGb5H40Qb7a80muYaIayBSslcywfKIheTWNYBecp0AolbUjgrB0m2Hs5qUPSBBhx7yrVt2/RpJmo8YWIMI2oadjsNt/SA3FDkoBOMy3O/vd7YM3VxgMHQEFwpPPBLYVDCfNYYoY4KSOav7qBa+L3rg8bp5cHzJR3kvxXdZnh0zDm1gJUiGFNVRlDKbq6xmNZPBOhtEtSuZb1OhbFpgpdq6RiaIVZVJLoHbinI7BMERzFeCs2jAhnvFbhtz1R4mVRqMw5u8g0mHb48CJMoINZAq1C8M9QBxLFjNKghfWaoF5yhDojJ0/Yz7du9XWPgnILzGEigozcCuDhewvu5U/rWp8kY7pFOIBSaN7c2j78CBMUMWQRr6+OLTHQfI9SpiZG1+21VBwWRJdzfd3LNjRbk1AIISLpFR7OJTmS1BhnCO+chlWlgqMjAEwiQMbgg8Lv6zKBICCcfBsEQvu6xJ5bF30JwHPEjMEMdP+FG+j5Q16wxonOMpE+F+Ihsy6xFN1ViTWOOjvU6nacRup80H5YHEPqFh3h8PXECoHLD/yD0XZx/vjsPhOoxyVcuT6bDn4doHZETT1swh7eqECvCkmINjDuBaPLVMjh6Kngj4g6G3JntHKHf1hQAv9MxSHm3aBR/47v4nas+Oyb2cBGA9+oEEdZnCQl922LAHq2ceUg9MMv1gbnttp4f5KVVoJaiNPqewef4GH8N04ZjdPfb/LGDgqXncC/Aj525/zMw/dkUP7xFc75/xG4pOOIIgivw/xqDjjbJMLpp/Z6pSocRt9pxEfUkRcfiTa/xfdW6J+kZJY+aPS5Np3wDmqjpZH4thhADqmxZQ1revPkFDe4YW41uqzAQoxR7oMMEZW4ezD5WfWeyvGHssssRCwywrGiX3zdHrwZCVJ9Ok5AmakOaJzk5cn5LnFrfM+F8mRj6ifzlRxV+6b23Xk+4ufQH0E4gqm2ux6/1dcQZjvofGVO4K5ZZqZ/P9hG/O2fsBKUNNZzKR+WT1EDRCN5WX2Hzpvv0qhFqmP94GzxCulhenZ6wAK/ZIufvopXeHY1p3cojugADKZnrbBmbFpHfqNBascC6I3n3QRTpPvbSWqrc8kg8PJybRQdsb4QWXf+0CGtJ3grdy9JkAOEfRKDw3ORp5Ztuq1O5esTWLeqIzI4xlrYndBVcYD6gq2TFskOzrmx111rxAmyh60EUFJRv1MahxI1QTIwCAmfHM53W3OerRP8FcHCBCPwLZADBLDY+Q+EsRMUaTFNAYy0DLiSpKA4woqKpP4q2rTSUScPmcwrXve0ioUJ0MUI64NXZ7ipmEEH6P8c56HHDCFmHpnNqeyFs2A74fDTE1PALeMrvlKL7VtATFV3+begm628YGwUgB9mgwAoV3i6kZL2/HNvo+kHbFh2TZSKC0FzHQGW6QwOlfdeQOead0CEZHx/dvIM+kP/Mde29lrSSD8K8yCMVKA2vTHjOMtBAe/QewtQZQGVbBOXi5tNjw1GavMkgKdI+woZO1S5HZDi4SUSHRBa/LhRoT2IrwAQUOi8G5WSUOFAUZK8smOb1ezHtThy8cK6xcxr2m3SlF0+dBN5tQQaneaD0j0RBccEr5HJh5YnGXA216VXMIrd5YEVSotG8L0kh5FMQXr0narmB9NPaBvydeVm+Jex5bkdBgTrtVOAQepuHS+U5E+f3a8s9nNIDnmw+RD6LQ+vV6citjb8xYPTX4teoo2r89T1VMVOBUblrcUovlQ5+qwcDFjy49aOAdV/b/rNDa5lnPJFPvvDHslDQd2uLHl8G4F3ajvyG8CGv/qOKFAPlkPOnJ4me9UGfaVWzJ3LMTA9EKTk8iShts7IxviNKN7h91s87VNXucTaUme6Nue4simWZXvj82vZoSHJPPW2/+YVCE2AHH3NvRgQDSrNw4rKIuFsWTz78ZXPQ2LAf7GFrsSYPwPgZIcKg74Dl9+jITxOTBkpZ"};
+let FOB=null;
+const KEY='fodor_ifa2026_v1';
+let D=JSON.parse(localStorage.getItem(KEY)||'{}');
+let filter='todo';
+
+function save(){try{localStorage.setItem(KEY,JSON.stringify(D));toast()}catch(e){alert('Opslag vol. Download het rapport en verwijder een paar foto\'s.')}meter()}
+let tt;function toast(){const s=document.getElementById('saved');s.classList.add('on');clearTimeout(tt);tt=setTimeout(()=>s.classList.remove('on'),900)}
+function meter(){const b=new Blob([JSON.stringify(D)]).size;
+ const alle=[...SUP.map(x=>x.st),...Object.keys(D).filter(k=>D[k].eigen)];
+ const n=t=>alle.filter(k=>status(k)===t).length;
+ document.getElementById('meter').textContent=
+  `${alle.filter(teDoen).length} nog te doen \u00b7 ${n('bezig')+n('klaar')} opgepakt \u00b7 ${n('over')} overgeslagen \u00b7 ${(b/1024).toFixed(0)} kB`}
+function g(st){return D[st]||(D[st]={})}
+function set(st,k,v){g(st)[k]=v;save()}
+const OVERSLAAN=/\b(sla+n?\s*we\s*over|overslaan|overgeslagen|niet interessant|geen interesse|was er niet|niet aanwezig)\b/i;
+function status(st){const d=D[st];if(!d)return'';
+ if(d.vervolg)return'klaar';
+ const c=(d.contact||'').trim();
+ if(c&&OVERSLAAN.test(c))return'over';
+ if(c||d.eigenmerk||(d.prijs&&d.prijs.some(r=>r.some(x=>x))))return'bezig';
+ return''}
+function teDoen(st){
+ if(status(st)!=='')return false;
+ const d=D[st];
+ if(d&&d.eigen&&!(d.naam||'').trim())return false;
+ return true}
+
+function esc(s){return(s||'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]))}
+
+function render(){
+ const groepen=['todo','alle','ZO','MA-ocht','MA-mid','reserve','na','geen','eigen'];
+ const nTodo=[...SUP.map(x=>x.st),...Object.keys(D).filter(k=>D[k].eigen)].filter(teDoen).length;
+ document.getElementById('filters').innerHTML=groepen.map(x=>
+  `<div class="chip ${filter===x?'on':''} ${x==='todo'?'todo':''}" onclick="filter='${x}';render()">${
+   {todo:'Nog te doen \u00b7 '+nTodo,alle:'Alles',ZO:'Zondag',['MA-ocht']:'Ma ochtend',['MA-mid']:'Ma middag',reserve:'Reserve',na:'N\u00e1 de beurs',geen:'Zonder leverancier',eigen:'Zelf toegevoegd'}[x]}</div>`).join('');
+ const eig=Object.keys(D).filter(k=>D[k].eigen).map(k=>({d:'eigen',t:'',st:k,n:D[k].naam||'(nieuwe stand)',ctx:'',fob:'',v:['','','','']}));
+ if(filter==='geen'){ document.getElementById('lijst').innerHTML=geenLijst(); meter(); return; }
+ const alles=[...SUP,...eig];
+ if(filter==='todo'){
+   const open=alles.filter(x=>teDoen(x.st));
+   document.getElementById('lijst').innerHTML=routeStrip(open)+open.map(kaart).join('');
+   meter(); return;
+ }
+ const lijst=alles.filter(s=>filter==='alle'||s.d===filter);
+ document.getElementById('lijst').innerHTML=lijst.map(kaart).join('');
+ meter();
+}
+
+function hal(st){const m=String(st).match(/^([0-9]+(?:\.[0-9]+)?[a-c]?)-/);return m?m[1]:'overig'}
+const HALVOLGORDE=['26a','26b','26c','22','23','21','20','11.1','10.1','5.1','1.2'];
+function routeStrip(open){
+  if(!open.length) return '<div class="klaarmelding"><b>Alles afgevinkt.</b> Er staat geen enkele stand meer open. Kom je onderweg toch iets tegen, gebruik dan <b>Stand toevoegen</b> onderaan de lijst.</div>';
+  const perHal={};
+  open.forEach(x=>{ const h=x.d==='na'?'n\u00e1 de beurs':hal(x.st); (perHal[h]=perHal[h]||[]).push(x); });
+  const namen=Object.keys(perHal).sort((a,b)=>{
+    const ia=HALVOLGORDE.indexOf(a), ib=HALVOLGORDE.indexOf(b);
+    return (ia<0?99:ia)-(ib<0?99:ib);
+  });
+  const st2=[...SUP.map(x=>x.st)];
+  let h='<div class="route"><div class="rkop"><b>Nog '+open.length+' standen open.</b> Gisteren zijn er '
+   +st2.filter(k=>status(k)==='bezig'||status(k)==='klaar').length+' opgepakt en '
+   +st2.filter(k=>status(k)==='over').length+' bewust overgeslagen. Tik een regel om de kaart te openen.</div>';
+  namen.forEach(n=>{
+    const rij=perHal[n].slice().sort((a,b)=>(a.t||'zz').localeCompare(b.t||'zz'));
+    h+='<div class="rhal">Hal '+n+' <span>'+rij.length+'</span></div>';
+    h+=rij.map(x=>{
+      const p=x.pr?x.pr.t:'';
+      return '<div class="rrij" onclick="spring(\''+x.st+'\')">'
+        +(p?'<i class="rp p'+p+'">'+p+'</i>':'<i class="rp pn">\u00b7</i>')
+        +'<b>'+x.st+'</b><span class="rn">'+esc(x.n)+'</span>'
+        +'<em>'+(x.t||{'MA-ocht':'ochtend','MA-mid':'middag','reserve':'reserve','na':'n\u00e1'}[x.d]||'')+'</em></div>';
+    }).join('');
+  });
+  return h+'</div>';
+}
+function spring(st){
+  const d=g(st); d.open=true; save();
+  const el=document.getElementById('c-'+st);
+  if(el){ el.classList.add('open'); if(el.scrollIntoView) el.scrollIntoView({behavior:'smooth',block:'start'}); }
+}
+
+function geenLijst(){
+  const n=Object.values(ZONDER).reduce((a,v)=>a+v.length,0);
+  let h='<div class="geen"><div class="kop"><b>'+n+' artikelen waar we nog g\u00e9\u00e9n leverancier voor hebben.</b><br>'
+   +'Niemand op onze route maakt dit. Kom je iemand tegen die het w\u00e9l maakt \u2014 op de vloer, in een gang, bij de koffie \u2014 vraag dan naar naam, WeChat en een prijs op 500 / 1.000 / 3.000. '
+   +'Voeg de stand toe met de knop onderaan de lijst.</div>';
+  for(const c in ZONDER){
+    h+='<h3>'+c+' \u00b7 '+ZONDER[c].length+'</h3><table><tr><th>Artikel</th><th class="pr">Onze prijs</th><th class="pr">MAX FOB</th></tr>';
+    h+=ZONDER[c].map(a=>'<tr><td>'+a[0]+'</td><td class="pr">'+a[1]+'</td><td class="pr fobcel">'+((FOB&&FOB.__zonder__&&FOB.__zonder__[a[0]])||'\u2022\u2022\u2022')+'</td></tr>').join('');
+    h+='</table>';
+  }
+  return h+(FOB?'':'<button class="ontgr" onclick="vraagCode()">Toon max-FOB</button>')+'<p style="font-size:11.5px;color:#667;margin-top:12px">Links onze beoogde verkoopprijs, rechts het inkoopplafond waarboven de marge onder 35% zakt. <b>Nooit noemen op de stand.</b></p></div>';
+}
+
+async function ontgrendel(code,stil){
+  try{
+    const b=x=>Uint8Array.from(atob(x),c=>c.charCodeAt(0));
+    const mat=await crypto.subtle.importKey('raw',new TextEncoder().encode(code),'PBKDF2',false,['deriveKey']);
+    const k=await crypto.subtle.deriveKey({name:'PBKDF2',salt:b(FOBENC.s),iterations:200000,hash:'SHA-256'},
+      mat,{name:'AES-GCM',length:256},false,['decrypt']);
+    const pt=await crypto.subtle.decrypt({name:'AES-GCM',iv:b(FOBENC.n)},k,b(FOBENC.c));
+    FOB=JSON.parse(new TextDecoder().decode(pt));
+    localStorage.setItem('fodor_ifa_code',code);
+    render();
+    return true;
+  }catch(e){ if(!stil) alert('Code klopt niet.'); return false; }
+}
+function vraagCode(){
+  const c=prompt('Code om de max-FOB-prijzen te tonen:');
+  if(c) ontgrendel(c);
+}
+function vergrendel(){ FOB=null; localStorage.removeItem('fodor_ifa_code'); render(); }
+
+function kaart(s){
+ const d=g(s.st), stt=status(s.st);
+ const pr=d.prijs||[['','','',''],['','','',''],['','','',''],['','','','']];
+ return `<div class="card ${d.open?'open':''}" id="c-${s.st}">
+ <div class="chd" onclick="toggle('${s.st}')">
+   <div class="dot ${stt}"></div>
+   <div class="st">${s.st}</div>${s.pr?`<div class="pri p${s.pr.t}">${s.pr.t}</div>`:''}
+   <div class="nm">${esc(s.n)}</div>
+   <div class="tm">${s.t||''}</div>
+ </div>
+ <div class="body">
+  ${s.pr?`<div class="pribar p${s.pr.t}"><b>${s.pr.l}</b> \u00b7 \u20ac${String(s.pr.o).replace('.',',')}M aan categorie in het model${s.pr.rol?' \u00b7 '+s.pr.rol:''}</div>`:''}
+  ${s.ctx?`<div class="ctx">${s.ctx}</div>`:''}
+  ${s.fob?`<div class="fob"><b>MAX FOB \u2014 niet noemen:</b> ${s.fob}</div>`:`<div class="fob">Max-FOB staat <b>niet</b> in deze webversie. Kijk op de papieren kaart achterin de beursmap.</div>`}
+  ${(s.art&&s.art.length)?`<div class="art"><b>Wat we hier willen kopen \u2014 ${s.art.length} artikelen</b>
+   <table><tr><th>Artikel</th><th class="pr">Onze prijs</th><th class="pr">MAX FOB</th></tr>${s.art.map(a=>`<tr><td>${a[0]}</td><td class="pr">${a[1]}</td><td class="pr fobcel">${FOB&&FOB[s.st]&&FOB[s.st][a[0]]?FOB[s.st][a[0]]:'&bull;&bull;&bull;'}</td></tr>`).join('')}</table>
+   ${FOB?`<i>MAX FOB is je bovengrens \u2014 <b>nooit noemen</b>. Onderhandel omlaag vanaf h\u00fan prijs.</i>`:`<button class="ontgr" onclick="vraagCode()">Toon max-FOB</button>`}</div>`:''}
+  ${d.eigen?`<label>Bedrijfsnaam</label><input type="text" value="${esc(d.naam)}" oninput="set('${s.st}','naam',this.value);document.querySelector('#c-${s.st} .nm').textContent=this.value">
+  <label>Wat maken ze</label><textarea oninput="set('${s.st}','watmaken',this.value)">${esc(d.watmaken)}</textarea>`:''}
+  <label>Gesproken met — naam, functie, mail, WeChat</label>
+  <textarea oninput="set('${s.st}','contact',this.value)">${esc(d.contact)}</textarea>
+  <label style="color:#c0392b">Verkoopt u zelf onder eigen merk in Europa? Welke landen en kanalen?</label>
+  <textarea oninput="set('${s.st}','eigenmerk',this.value)">${esc(d.eigenmerk)}</textarea>
+  <div class="g3">
+   <div><label>MOQ</label><input type="text" value="${esc(d.moq)}" oninput="set('${s.st}','moq',this.value)"></div>
+   <div><label>Levertijd monster</label><input type="text" value="${esc(d.ltm)}" oninput="set('${s.st}','ltm',this.value)"></div>
+   <div><label>Levertijd serie</label><input type="text" value="${esc(d.lts)}" oninput="set('${s.st}','lts',this.value)"></div>
+  </div>
+  <label>FOB-prijs op drie volumes</label>
+  <table class="pr"><tr><th>Model</th><th>500</th><th>1.000</th><th>3.000</th><th>st/40HQ</th></tr>
+  ${pr.map((r,i)=>`<tr>${r.map((c,j)=>`<td><input type="text" value="${esc(c)}" oninput="prijs('${s.st}',${i},${j},this.value)"></td>`).join('')}<td><input type="text" value="${esc((d.hq||[])[i])}" oninput="hq('${s.st}',${i},this.value)"></td></tr>`).join('')}
+  </table>
+  <div class="g2">
+   <div><label>Certificering</label><input type="text" value="${esc(d.cert)}" oninput="set('${s.st}','cert',this.value)">
+        <label>Wij als fabrikant op typeplaatje?</label><input type="text" value="${esc(d.plaat)}" oninput="set('${s.st}','plaat',this.value)"></div>
+   <div><label>Betaalvoorwaarden</label><input type="text" value="${esc(d.betaal)}" oninput="set('${s.st}','betaal',this.value)">
+        <label>Exclusiviteit — landen / kanalen / duur</label><input type="text" value="${esc(d.excl)}" oninput="set('${s.st}','excl',this.value)"></div>
+  </div>
+  ${s.v.filter(x=>x).length?`<label>Onze vragen bij deze stand</label>${s.v.filter(x=>x).map((q,i)=>
+    `<div class="vraag"><div class="bx ${(d.gedaan||[])[i]?'on':''}" onclick="vink('${s.st}',${i},this)">${(d.gedaan||[])[i]?'✓':''}</div><div>${q}</div></div>
+     <textarea style="min-height:44px" oninput="antw('${s.st}',${i},this.value)">${esc((d.antw||[])[i])}</textarea>`).join('')}`:''}
+  <div class="fotohint">Fotografeer met de <b>camera-app</b>, niet hier — zorg dat <b>${s.st}</b> in beeld staat.</div>
+  <label>Overig / opvallend</label>
+  <textarea oninput="set('${s.st}','overig',this.value)">${esc(d.overig)}</textarea>
+  <div class="scores">
+   ${[['s_product','product'],['s_prijs','prijs'],['s_vertrouwen','vertrouwen']].map(([k,lab])=>`<div class="sc"><label>${lab}</label><div class="stars">
+     ${[1,2,3,4,5].map(n=>`<span class="${(d[k]||0)>=n?'on':''}" onclick="score('${s.st}','${k}',${n})">${n}</span>`).join('')}
+   </div></div>`).join('')}
+  </div>
+  <label>Vervolg</label>
+  <div class="vervolg">
+   <button class="${d.vervolg==='monster'?'on':''}" onclick="verv('${s.st}','monster')">Monster</button>
+   <button class="${d.vervolg==='prijs'?'on':''}" onclick="verv('${s.st}','prijs')">Prijs opvragen</button>
+   <button class="nee ${d.vervolg==='nee'?'on':''}" onclick="verv('${s.st}','nee')">Nee</button>
+  </div>
+ </div></div>`;
+}
+
+function toggle(st){g(st).open=!g(st).open;save();document.getElementById('c-'+st).classList.toggle('open')}
+function prijs(st,i,j,v){const d=g(st);d.prijs=d.prijs||[['','','',''],['','','',''],['','','',''],['','','','']];d.prijs[i][j]=v;save()}
+function hq(st,i,v){const d=g(st);d.hq=d.hq||[];d.hq[i]=v;save()}
+function vink(st,i,el){const d=g(st);d.gedaan=d.gedaan||[];d.gedaan[i]=!d.gedaan[i];el.classList.toggle('on');el.textContent=d.gedaan[i]?'✓':'';save()}
+function antw(st,i,v){const d=g(st);d.antw=d.antw||[];d.antw[i]=v;save()}
+function score(st,k,n){g(st)[k]=n;save();render()}
+function verv(st,v){g(st).vervolg=g(st).vervolg===v?'':v;save();render()}
+function nieuw(){const st='eigen-'+Date.now().toString().slice(-5);D[st]={eigen:true,naam:'',open:true};save();filter='eigen';render();
+ setTimeout(()=>document.getElementById('c-'+st).scrollIntoView({behavior:'smooth'}),80)}
+
+
+function alleRijen(){
+ const eig=Object.keys(D).filter(k=>D[k].eigen).map(k=>({d:'eigen',t:'',st:k,n:D[k].naam||'(nieuw)',ctx:'',fob:'',v:[]}));
+ return [...SUP,...eig].filter(s=>D[s.st]&&Object.keys(D[s.st]).some(k=>k!=='open'));
+}
+function exportCSV(){
+ const H=['Dag','Tijd','Stand','Leverancier','Contact','Eigen merk EU','MOQ','Levertijd monster','Levertijd serie','Prijzen','st/40HQ','Certificering','Typeplaatje','Betaling','Exclusiviteit','Antwoorden','Overig','Product','Prijs','Vertrouwen','Vervolg','Foto s'];
+ const rows=alleRijen().map(s=>{const d=D[s.st];return [s.d,s.t,s.st,d.naam||s.n,d.contact,d.eigenmerk,d.moq,d.ltm,d.lts,
+  (d.prijs||[]).filter(r=>r.some(c=>c)).map(r=>r.join(' / ')).join(' | '),(d.hq||[]).filter(x=>x).join(' | '),
+  d.cert,d.plaat,d.betaal,d.excl,(d.antw||[]).filter(x=>x).join(' | '),d.overig,d.s_product,d.s_prijs,d.s_vertrouwen,d.vervolg]
+  .map(x=>'"'+String(x==null?'':x).replace(/"/g,'""').replace(/\n/g,' ')+'"').join(',')});
+ dl('IFA2026_beursvangst.csv','text/csv;charset=utf-8','﻿'+H.join(',')+'\n'+rows.join('\n'));closeMenu()}
+function exportHTML(){
+ const R=alleRijen();
+ const h=`<!DOCTYPE html><html lang="nl"><head><meta charset="utf-8"><title>IFA 2026 beursvangst — Fodor</title>
+<style>body{font:14px -apple-system,Segoe UI,Helvetica,Arial;max-width:900px;margin:0 auto;padding:24px;color:#111}
+h1{font:600 26px Georgia,serif}h2{font:600 18px Georgia,serif;margin:26px 0 6px;border-top:2px solid #111;padding-top:10px}
+table{border-collapse:collapse;width:100%;margin:8px 0;font-size:13px}td,th{border:1px solid #ddd;padding:6px 8px;vertical-align:top;text-align:left}
+th{background:#f0f0ee;width:26%}.im{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0}.im img{width:190px;border-radius:8px;border:1px solid #ddd}
+.tag{display:inline-block;padding:2px 9px;border-radius:5px;font-weight:700;font-size:12px}
+.monster{background:#e8f5e9}.prijs{background:#fff8e1}.nee{background:#fdecea}
+@media print{h2{page-break-before:always}}</style></head><body>
+<h1>IFA 2026 — beursvangst Fodor B.V.</h1><p>Geëxporteerd ${new Date().toLocaleString('nl-NL')} · ${R.length} standen</p>
+${R.map(s=>{const d=D[s.st];const rij=(k,v)=>v?`<tr><th>${k}</th><td>${esc(String(v)).replace(/\n/g,'<br>')}</td></tr>`:'';
+ return `<h2>${s.st} · ${esc(d.naam||s.n)} ${d.vervolg?`<span class="tag ${d.vervolg}">${d.vervolg}</span>`:''}</h2>
+ <table>${rij('Dag / tijd',[s.d,s.t].filter(x=>x).join(' '))}${rij('Gesproken met',d.contact)}${rij('Eigen merk in EU',d.eigenmerk)}
+ ${rij('MOQ',d.moq)}${rij('Levertijd monster',d.ltm)}${rij('Levertijd serie',d.lts)}
+ ${(d.prijs||[]).some(r=>r.some(c=>c))?`<tr><th>FOB-prijzen</th><td><table><tr><th>Model</th><th>500</th><th>1.000</th><th>3.000</th><th>st/40HQ</th></tr>${d.prijs.filter(r=>r.some(c=>c)).map((r,i)=>`<tr>${r.map(c=>`<td>${esc(c)}</td>`).join('')}<td>${esc((d.hq||[])[i])}</td></tr>`).join('')}</table></td></tr>`:''}
+ ${rij('Certificering',d.cert)}${rij('Typeplaatje',d.plaat)}${rij('Betaling',d.betaal)}${rij('Exclusiviteit',d.excl)}
+ ${(d.antw||[]).some(x=>x)?`<tr><th>Antwoorden op onze vragen</th><td>${s.v.filter(x=>x).map((q,i)=>(d.antw||[])[i]?`<b>${esc(q)}</b><br>${esc(d.antw[i])}<br><br>`:'').join('')}</td></tr>`:''}
+ ${rij('Overig',d.overig)}${rij('Score',[d.s_product&&'product '+d.s_product,d.s_prijs&&'prijs '+d.s_prijs,d.s_vertrouwen&&'vertrouwen '+d.s_vertrouwen].filter(x=>x).join(' · '))}</table>
+`}).join('')}
+</body></html>`;
+ dl('IFA2026_beursvangst.html','text/html;charset=utf-8',h);closeMenu()}
+function backupJSON(){dl('IFA2026_backup_'+new Date().toISOString().slice(0,10)+'.json','application/json',JSON.stringify(D));closeMenu()}
+function leeg(v){return v===undefined||v===null||v===''||(Array.isArray(v)&&!v.some(x=>Array.isArray(x)?x.some(y=>y):y=>y))}
+function celLeeg(v){return v===undefined||v===null||v===''}
+function samenvoegen(mijn,hun){
+  // Voegt 'hun' bij 'mijn' zonder ooit iets van mij weg te gooien.
+  const st={nieuw:0,aangevuld:0,conflict:0,details:[]};
+  for(const stand in hun){
+    const h=hun[stand]||{};
+    if(!mijn[stand] || Object.keys(mijn[stand]).filter(k=>k!=='open').length===0){
+      const kopie=Object.assign({},h); delete kopie.open;
+      if(Object.keys(kopie).length){ mijn[stand]=Object.assign(mijn[stand]||{},kopie); st.nieuw++; }
+      continue;
+    }
+    const m=mijn[stand]; let raak=false;
+    for(const veld in h){
+      if(veld==='open') continue;
+      const hv=h[veld], mv=m[veld];
+      if(veld==='prijs'){
+        if(!Array.isArray(hv)) continue;
+        if(!Array.isArray(mv)){ m.prijs=hv; raak=true; continue; }
+        for(let i=0;i<hv.length;i++) for(let j=0;j<(hv[i]||[]).length;j++){
+          const hc=hv[i][j], mc=(mv[i]||[])[j];
+          if(celLeeg(hc)) continue;
+          if(celLeeg(mc)){ mv[i]=mv[i]||['','','','']; mv[i][j]=hc; raak=true; }
+          else if(mc!==hc){ st.conflict++; st.details.push(stand+' prijstabel: "'+mc+'" vs "'+hc+'"'); }
+        }
+        continue;
+      }
+      if(veld==='antw'){
+        if(!Array.isArray(hv)) continue;
+        m.antw=m.antw||[];
+        hv.forEach((x,i)=>{ if(celLeeg(x))return; if(celLeeg(m.antw[i])){m.antw[i]=x;raak=true;}
+          else if(m.antw[i]!==x){st.conflict++;st.details.push(stand+' vraag '+(i+1));} });
+        continue;
+      }
+      if(celLeeg(hv)) continue;
+      if(celLeeg(mv)){ m[veld]=hv; raak=true; }
+      else if(mv!==hv){
+        st.conflict++; st.details.push(stand+' '+veld);
+        m.overig=(m.overig?m.overig+'\n':'')+'[ander apparaat] '+veld+': '+hv;
+      }
+    }
+    if(raak) st.aangevuld++;
+  }
+  return st;
+}
+function importJSON(inp){
+  const f=inp.files[0]; if(!f) return; const r=new FileReader();
+  r.onload=e=>{
+    let hun;
+    try{ hun=JSON.parse(e.target.result); }catch(x){ alert('Kon het bestand niet lezen.'); return; }
+    if(typeof hun!=='object'||!hun){ alert('Dit lijkt geen back-up van deze app.'); return; }
+    const veilig=JSON.stringify(D);
+    const st=samenvoegen(D,hun);
+    save(); render(); closeMenu();
+    let m='Samengevoegd, er is niets van jou overschreven.\n\n'
+      + st.nieuw+' standen erbij\n'
+      + st.aangevuld+' standen aangevuld\n'
+      + st.conflict+' velden stonden op allebei anders ingevuld';
+    if(st.conflict) m+='\n\nJouw versie is behouden; die van het andere apparaat staat erbij onder "Overig":\n- '
+      + st.details.slice(0,8).join('\n- ') + (st.details.length>8?'\n- (en '+(st.details.length-8)+' meer)':'');
+    m+='\n\nNiet goed? Kies Ongedaan maken in het menu.';
+    localStorage.setItem('fodor_ifa_voor_import',veilig);
+    alert(m);
+  };
+  r.readAsText(f); inp.value='';
+}
+function importOngedaan(){
+  const v=localStorage.getItem('fodor_ifa_voor_import');
+  if(!v){ alert('Er is niets om ongedaan te maken.'); return; }
+  if(!confirm('Terug naar de situatie van vlak vóór het samenvoegen?')) return;
+  D=JSON.parse(v); localStorage.removeItem('fodor_ifa_voor_import'); save(); render(); closeMenu();
+}
+function dl(naam,type,inhoud){const b=new Blob([inhoud],{type});const u=URL.createObjectURL(b);
+ const a=document.createElement('a');a.href=u;a.download=naam;document.body.appendChild(a);a.click();
+ setTimeout(()=>{URL.revokeObjectURL(u);a.remove()},400)}
+function openMenu(){document.getElementById('menu').classList.add('on')}
+function closeMenu(){document.getElementById('menu').classList.remove('on')}
+document.getElementById('menu').addEventListener('click',e=>{if(e.target.id==='menu')closeMenu()});
+
+// Draait hij vanaf het beginscherm of nog in een tabblad?
+function opBeginscherm(nav,mm){
+  if(nav.standalone===true) return true;
+  try{ if(mm && mm('(display-mode: standalone)').matches) return true; }catch(e){}
+  return false;
+}
+function isTouchApparaat(nav){
+  return (nav.maxTouchPoints||0) > 0 || /iPad|iPhone|iPod|Android/.test(nav.userAgent||'');
+}
+function checkBeginscherm(){
+  const tab = isTouchApparaat(navigator) && !opBeginscherm(navigator, window.matchMedia && window.matchMedia.bind(window));
+  document.body.classList.toggle('tab', tab);
+  return tab;
+}
+checkBeginscherm();
+const bekend=localStorage.getItem('fodor_ifa_code');
+if(bekend) ontgrendel(bekend,true);
+
+render();
+</script>
+</body></html>
+<!DOCTYPE html>
+<html lang="nl"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<title>IFA 2026 · Fodor</title>
+<style>
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{margin:0;font:16px/1.45 -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;background:#f2f2ef;color:#111;-webkit-text-size-adjust:100%}
+header{position:sticky;top:0;z-index:30;background:#111;color:#fff;padding:10px 14px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+header h1{font:600 17px/1.2 Georgia,serif;margin:0;flex:1}
+.hbtn{background:#2f2f2f;color:#fff;border:0;border-radius:8px;padding:9px 13px;font-size:14px;font-weight:600}
+.hbtn.act{background:#1e7a3c}
+.meter{font-size:11.5px;opacity:.75;width:100%}
+main{padding:10px 12px 120px;max-width:900px;margin:0 auto}
+.filters{display:flex;gap:7px;overflow-x:auto;padding:9px 0;-webkit-overflow-scrolling:touch}
+.chip{white-space:nowrap;border:1.5px solid #bbb;background:#fff;border-radius:20px;padding:7px 14px;font-size:14px;font-weight:600;color:#444}
+.chip.on{background:#111;color:#fff;border-color:#111}
+.card{background:#fff;border-radius:12px;margin:9px 0;box-shadow:0 1px 3px rgba(0,0,0,.09);overflow:hidden}
+.chd{display:flex;align-items:center;gap:10px;padding:13px 14px}
+.chd .st{background:#111;color:#fff;font:700 13px ui-monospace,Menlo,monospace;padding:4px 9px;border-radius:6px;white-space:nowrap}
+.chd .nm{flex:1;font-weight:600;font-size:15.5px;line-height:1.25}
+.chd .tm{font-size:12px;color:#777;white-space:nowrap}
+.dot{width:11px;height:11px;border-radius:50%;background:#ddd;flex:none}
 .dot.bezig{background:#e0a800}.dot.klaar{background:#1e7a3c}
 .body{display:none;padding:0 14px 16px;border-top:1px solid #eee}
 .card.open .body{display:block}
